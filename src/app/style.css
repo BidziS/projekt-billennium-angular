@@ -29,3 +29,16 @@ md-list-item > button{
         margin-left: 40px;
     }
 }
+ui-view {
+    height: 100%;
+}
+
+.container{
+    height: 100%;
+}
+
+.menu-list-button{
+    width: 100%;
+    height: 60px;
+    text-align: left !important;
+}

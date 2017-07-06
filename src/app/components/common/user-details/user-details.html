@@ -1,12 +1,12 @@
-<md-sidenav md-is-locked-open="$mdMedia('gt-sm')" class="md-whiteframe-4dp" md-component-id="left">
+<md-sidenav md-is-locked-open="$mdMedia('gt-sm')" class="md-sidenav-right md-whiteframe-4dp" md-component-id="right">
     <md-list>
         <md-list-item>
-            <md-button ng-click="vm.goToSite('statistic')" class="menu-list-button">          
+            <md-button class="menu-list-button">          
                 Strona główna
             </md-button>
         </md-list-item>
         <md-list-item>
-            <md-button ng-click="vm.goToSite('manage-lectures')" class="menu-list-button">          
+            <md-button class="menu-list-button">          
                 Zarządzaj lekcjami
             </md-button>
         </md-list-item>
@@ -15,12 +15,10 @@
                 Zarządzaj grupami
             </md-button>
         </md-list-item>
-        <md-list-item>
-            
+        <md-list-item>            
             <md-button  class="menu-list-button md-button">      
-                    Zarządzaj zadaniami
-            </md-button>
-         
+                Zarządzaj zadaniami
+            </md-button>        
         </md-list-item>
     </md-list>
     <md-button ng-click="vm.check()" >          

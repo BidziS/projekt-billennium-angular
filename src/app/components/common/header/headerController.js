@@ -1,9 +1,12 @@
+import {$mdSidenav} from 'angular-material';
+import {$state} from '@uirouter/angularjs';
+
 export default class HeaderController{
-    constructor($mdSidenav){
+    constructor($mdSidenav, $state){
         this.title = 'header';
         this.$mdSidenav = $mdSidenav;
+        this.$state = $state;
         this.isLoggedIn = false;
-        this.test();
     }
 
     $onInit(){
@@ -16,10 +19,10 @@ export default class HeaderController{
     toggleLogin(){
         this.isLoggedIn = !this.isLoggedIn;
     }
-    test(){
-        console.log('x');
+    logout(){
+        this.$state.go('login');
     }
     
 }
 
-HeaderController.$inject = ['$mdSidenav']; 
+//HeaderController.$inject = ['$mdSidenav', '$state']; 
