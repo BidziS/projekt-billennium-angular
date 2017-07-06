@@ -19,11 +19,13 @@ import StatisticComponent from './components/home/statistic/statisticComponent';
 import ManageLecturesComponent from './components/home/manageLectures/manage-lecturesComponent';
 
 export default angular.module('AppModule', [ngMaterial, uiRouter, ngRedux, CommonModule.name])
+
                     .config(routingConfigs)
                     .component('homeComponent', HomeComponent)
                     .component('loginComponent', LoginComponent)
                     .component('myStatistic', StatisticComponent)
-                    .component('myManageLectures', ManageLecturesComponent);
+                    .component('myManageLectures', ManageLecturesComponent)
+                    .component('logoutComponent', LogoutComponent)
 
 
 
@@ -54,13 +56,19 @@ function routingConfigs($stateProvider, $urlRouterProvider, $ngReduxProvider) {
     url: '/manage-lectures',
     component: 'myManageLectures'
   }
+
+  const logout = {
+    name: 'logout',
+    url: '/logout',
+    component: 'logoutComponent'
+  }
   
 
   $stateProvider
     .state(login)
     .state(home)
     .state(homeStatistic)
-    .state(homeManageLectures);
-
+    .state(homeManageLectures)
+    .state(logout);
     $ngReduxProvider.createStoreWith(RootReducer);
 };

@@ -22,7 +22,7 @@ export default class HeaderController{
         this.isLoggedIn = !this.isLoggedIn;
     }
     logout(){
-        this.$state.go('login');
+        this.$state.go('logout');
     }
     $onDestroy(){
         this.unsubscribe();
