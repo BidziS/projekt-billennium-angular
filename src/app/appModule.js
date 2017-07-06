@@ -13,12 +13,13 @@ import './style.css';
 import CommonModule from './components/common/commonModule';
 
 import LoginComponent from './components/login/loginComponent';
+import LogoutComponent from './components/logout/logoutComponent';
 import HomeComponent from './components/home/homeComponent';
 
 import StatisticComponent from './components/home/statistic/statisticComponent';
 import ManageLecturesComponent from './components/home/manageLectures/manage-lecturesComponent';
 
-export default angular.module('AppModule', [ngMaterial, uiRouter, CommonModule.name])
+export default angular.module('AppModule', [ngMaterial, uiRouter, ngRedux, CommonModule.name])
                     .config(routingConfigs)
                     .component('homeComponent', HomeComponent)
                     .component('loginComponent', LoginComponent)
@@ -67,5 +68,6 @@ function routingConfigs($stateProvider, $urlRouterProvider, $ngReduxProvider) {
     .state(login)
     .state(home)
     .state(homeStatistic)
-    .state(homeManageLectures);
+    .state(homeManageLectures)
+    .state(logout);
 };
