@@ -46,3 +46,7 @@ md-list-item > button{
     border: 1px solid black;
     background-color: white;
 }
+
+.style-text {
+    font-family: 'Dancing Script', cursive;
+}
