@@ -3,7 +3,7 @@ import ngMaterial from 'angular-material';
 import uiRouter from '@uirouter/angularjs';
 import ngRedux from 'ng-redux';
 
-import { RootReducer } from './reducers';
+import { RootReducer } from './reducers/index';
 
 import '../../node_modules/angular-material/angular-material.css';
 import '../../node_modules/font-awesome/css/font-awesome.min.css';
