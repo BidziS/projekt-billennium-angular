@@ -1,6 +1,9 @@
 import angular from 'angular';
 import ngMaterial from 'angular-material';
 import uiRouter from '@uirouter/angularjs';
+import ngRedux from 'ng-redux';
+
+import { RootReducer } from './reducers';
 
 import '../../node_modules/angular-material/angular-material.css';
 import '../../node_modules/font-awesome/css/font-awesome.min.css';
@@ -15,8 +18,6 @@ import HomeComponent from './components/home/homeComponent';
 import StatisticComponent from './components/home/statistic/statisticComponent';
 import ManageLecturesComponent from './components/home/manageLectures/manage-lecturesComponent';
 
-import LogoutComponent from './components/logout/logoutComponent';
-
 export default angular.module('AppModule', [ngMaterial, uiRouter, CommonModule.name])
                     .config(routingConfigs)
                     .component('homeComponent', HomeComponent)
@@ -27,7 +28,7 @@ export default angular.module('AppModule', [ngMaterial, uiRouter, CommonModule.n
 
 
 
-function routingConfigs($stateProvider, $urlRouterProvider) {
+function routingConfigs($stateProvider, $urlRouterProvider, $ngReduxProvider) {
   $urlRouterProvider
     .when('/home', '/home/statistic')
     .otherwise('/login');
@@ -66,6 +67,5 @@ function routingConfigs($stateProvider, $urlRouterProvider) {
     .state(login)
     .state(home)
     .state(homeStatistic)
-    .state(homeManageLectures)
-    .state(logout);
+    .state(homeManageLectures);
 };

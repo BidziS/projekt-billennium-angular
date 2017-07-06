@@ -33,6 +33,7 @@ md-list-item > button{
 
 .container{
     height: 100%;
+    padding-top: 100px;
 }
 
 .menu-list-button{
@@ -45,8 +46,4 @@ md-list-item > button{
     margin: 10px;
     border: 1px solid black;
     background-color: white;
-}
-
-.style-text {
-    font-family: 'Dancing Script', cursive;
 }
