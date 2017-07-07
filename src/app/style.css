@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script');
+
 html, body {
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
@@ -58,4 +60,25 @@ md-toolbar{
 
 .style-text {
     font-family: 'Dancing Script', cursive;
+}
+
+.login-container {
+    height: 100vh;
+}
+
+.login-container form {
+    border: 3px dashed rgba(0,0,0,0.1);
+    border-radius: 5%;
+}
+
+.login-container md-input-container {
+    margin: 20px;
+}
+
+.login-container input {
+    font-size: 25px;
+}
+
+.logout-container a {
+    text-decoration:none;
 }
