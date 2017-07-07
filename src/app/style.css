@@ -158,6 +158,11 @@ button { margin-bottom: 10px; }
     opacity: 1;
 }
 
+.menu-list-button .md-toggle-icon {
+  transform: rotateZ(0deg);
+  -webkit-transform: rotateZ(0deg);
+}
+
 .menu-list-button .md-toggle-icon.clicked {
   transform: rotateZ(180deg);
   -webkit-transform: rotateZ(180deg);
