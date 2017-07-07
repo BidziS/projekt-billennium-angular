@@ -62,6 +62,8 @@ md-toolbar{
 
 .well[ui-view]{
  height: 65px; 
+.login-container {
+    height: 100vh;
 }
 
 .view-enter, .view-leave {

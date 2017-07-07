@@ -4,10 +4,11 @@ import ngAnimate from 'angular-animate';
 import uiRouter from '@uirouter/angularjs';
 import ngRedux from 'ng-redux';
 
-import { RootReducer } from './reducers/index';
+import { RootReducer } from './reducers';
 
 import '../../node_modules/angular-material/angular-material.css';
 import '../../node_modules/font-awesome/css/font-awesome.min.css';
+import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 import './style.css';
 
