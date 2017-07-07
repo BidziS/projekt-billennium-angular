@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Księgarnia internetowa</title>
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+</head>
+<<<<<<< HEAD
+<body ng-app="AppModule" allow-animations-on-load>
+=======
+<body ng-app="AppModule">
+>>>>>>> f5e108868c02b20057789699021dec89234a269b
+    
+<ui-view></ui-view>
+
+</body>
+</html>
