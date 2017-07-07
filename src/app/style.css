@@ -59,3 +59,100 @@ md-toolbar{
 .style-text {
     font-family: 'Dancing Script', cursive;
 }
+
+.well[ui-view]{
+ height: 65px; 
+}
+
+.view-enter, .view-leave {
+  position: absolute;
+  -webkit-transition:all .5s ease-in-out;
+	-moz-transition:all .5s ease-in-out;
+	-o-transition:all .5s ease-in-out;
+	transition:all .5s ease-in-out;
+}
+
+.view-enter {
+  opacity: 0;
+  -webkit-transform:scale3d(0.5, 0.5, 0.5);
+  -moz-transform:scale3d(0.5, 0.5, 0.5);
+  transform:scale3d(0.5, 0.5, 0.5);
+}
+
+.view-enter-active {
+  opacity: 1;
+  -webkit-transform:scale3d(1, 1, 1);
+  -moz-transform:scale3d(1, 1, 1);
+  transform:scale3d(1, 1, 1);
+}
+
+.view-leave {
+  opacity: 1;
+  /*padding-left: 0px;*/  
+  -webkit-transform:translate3d(0, 0, 0);
+  -moz-transform:translate3d(0, 0, 0);
+  transform:translate3d(0, 0, 0);
+}
+
+.view-leave-active {
+  opacity: 0;
+  /*padding-left: 100px;*/
+  -webkit-transform:translate3d(100px, 0, 0);
+  -moz-transform:translate3d(100px, 0, 0);
+  transform:translate3d(100px, 0, 0);
+}
+
+/*.main.ng-enter {
+  transition:0.5s linear all;
+  opacity:0;
+}
+
+.main.ng-enter-active {
+    opacity: 1;
+}*/
+
+.fade.ng-enter {
+  transition:0.5s linear all;
+  opacity:1;
+}
+
+
+.fade.ng-enter.ng-enter-active {
+  opacity: 0;
+}
+
+button { margin-bottom: 10px; }
+
+
+.fade-in-out {
+  /*transition: 1s linear all !important;  */
+  opacity: 1;
+}
+
+.fade-in-out.ng-enter {
+  transition: 0.5s linear all;  
+  opacity: 0;
+}
+.fade-in-out.ng-enter-active {
+  opacity: 1;
+}
+.fade-in-out.ng-hide {
+  opacity: 0;
+}
+.fade-in-out.ng-hide-active {
+  opacity: 0;
+}
+
+
+.main.ng-enter {
+    /* transition on enter for .5s */
+    transition: .5s;
+
+    /* start with opacity 0 (invisible) */
+    /*opacity: 1;*/
+}
+/* end 'enter' transition on main view */
+.main.ng-enter-active {
+    /* end with opacity 1 (fade in) */
+    opacity: 1;
+}

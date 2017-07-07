@@ -1,5 +1,6 @@
 import angular from 'angular';
 import ngMaterial from 'angular-material';
+import ngAnimate from 'angular-animate';
 import uiRouter from '@uirouter/angularjs';
 import ngRedux from 'ng-redux';
 
@@ -13,19 +14,22 @@ import './style.css';
 import CommonModule from './components/common/commonModule';
 
 import LoginComponent from './components/login/loginComponent';
+import LogoutComponent from './components/logout/logoutComponent';
 import HomeComponent from './components/home/homeComponent';
 
 import StatisticComponent from './components/home/statistic/statisticComponent';
 import ManageLecturesComponent from './components/home/manageLectures/manage-lecturesComponent';
+import ManageGroupsComponent from './components/home/manageGroups/manage-groupsComponent';
 
-export default angular.module('AppModule', [ngMaterial, uiRouter, ngRedux, CommonModule.name])
-
+export default angular.module('AppModule', [ngMaterial, uiRouter, ngRedux, ngAnimate, CommonModule.name])
                     .config(routingConfigs)
                     .component('homeComponent', HomeComponent)
                     .component('loginComponent', LoginComponent)
                     .component('myStatistic', StatisticComponent)
                     .component('myManageLectures', ManageLecturesComponent)
-                    .component('logoutComponent', LogoutComponent)
+                    .component('myManageGroups', ManageGroupsComponent)
+                    .component('logoutComponent', LogoutComponent);
+
 
 
 
@@ -52,6 +56,12 @@ function routingConfigs($stateProvider, $urlRouterProvider, $ngReduxProvider) {
   }
 
   const homeManageLectures = {
+    name: 'home.manage-groups',
+    url: '/manage-groups',
+    component: 'myManageGroups'
+  }
+
+  const homeManageGroups = {
     name: 'home.manage-lectures',
     url: '/manage-lectures',
     component: 'myManageLectures'
@@ -69,6 +79,7 @@ function routingConfigs($stateProvider, $urlRouterProvider, $ngReduxProvider) {
     .state(home)
     .state(homeStatistic)
     .state(homeManageLectures)
+    .state(homeManageGroups)
     .state(logout);
     $ngReduxProvider.createStoreWith(RootReducer);
 };
