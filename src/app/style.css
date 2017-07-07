@@ -31,9 +31,9 @@ md-list-item > button{
 }
 
 
-.container{
+.site-container{
     height: 100%;
-    padding-top: 100px;
+    padding-top: 70px;
 }
 
 .menu-list-button{
@@ -60,8 +60,7 @@ md-toolbar{
     font-family: 'Dancing Script', cursive;
 }
 
-.well[ui-view]{
- height: 65px; 
+
 .login-container {
     height: 100vh;
 }
@@ -157,4 +156,33 @@ button { margin-bottom: 10px; }
 .main.ng-enter-active {
     /* end with opacity 1 (fade in) */
     opacity: 1;
+}
+
+.menu-list-button .md-toggle-icon.clicked {
+  transform: rotateZ(180deg);
+  -webkit-transform: rotateZ(180deg);
+}
+
+.menu-list-button.clicked {
+  background-color: rgba(0, 0, 0, 1);
+}
+
+.md-toggle-icon.clicked {
+  transition: transform .3s ease-in-out;
+  -webkit-transition: -webkit-transform .3s ease-in-out;
+}
+
+.menu-toggle-list{
+    margin-left: 8px;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.submenu-list-button{
+    width: 90%;
+    height: 60px;
+    text-align: left !important;
+}
+
+.pullright{
+    margin-left: 180px;
 }
