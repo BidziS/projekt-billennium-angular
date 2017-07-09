@@ -1,5 +1,6 @@
 import angular from 'angular';
 import ngMaterial from 'angular-material';
+import ngAnimate from 'angular-animate';
 import uiRouter from '@uirouter/angularjs';
 import ngRedux from 'ng-redux';
 
@@ -13,13 +14,13 @@ import './style.css';
 import CommonModule from './components/common/commonModule';
 
 import LoginComponent from './components/login/loginComponent';
+import LogoutComponent from './components/logout/logoutComponent';
 import HomeComponent from './components/home/homeComponent';
 
 import StatisticComponent from './components/home/statistic/statisticComponent';
 import ManageLecturesComponent from './components/home/manageLectures/manage-lecturesComponent';
 
-export default angular.module('AppModule', [ngMaterial, uiRouter, ngRedux, CommonModule.name])
-
+export default angular.module('AppModule', [ngMaterial, uiRouter, ngRedux, ngAnimate, CommonModule.name])
                     .config(routingConfigs)
                     .component('homeComponent', HomeComponent)
                     .component('loginComponent', LoginComponent)

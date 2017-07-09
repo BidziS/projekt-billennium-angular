@@ -1,4 +1,4 @@
-<div flex>
+<div ng-if="vm.showSite" class="fade" flex>
     <md-card md-theme="darkgrey" md-theme-watch flex>
         <md-card-title>
             <md-card-title-text>
@@ -10,8 +10,13 @@
             </md-card-title-media>
         </md-card-title>
         <md-card-actions layout="row" layout-align="end center">
-            <md-button>Action 1</md-button>
-            <md-button>Action 2</md-button>
+            <md-button ng-click="vm.logInToSite()">Action 1</md-button>
+            <md-button ng-click="vm.logOutToSite()">Action 2</md-button>
         </md-card-actions>
     </md-card>
 </div>
+<div ng-if="bool" class="fade">
+   Fade me in out
+</div>
+<button ng-click="bool=true">Fade In!</button>
+<button ng-click="bool=false">Fade Out!</button>
