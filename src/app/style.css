@@ -31,9 +31,9 @@ md-list-item > button{
 }
 
 
-.container{
+.site-container{
     height: 100%;
-    padding-top: 100px;
+    padding-top: 70px;
 }
 
 .menu-list-button{
@@ -60,22 +60,134 @@ md-toolbar{
     font-family: 'Dancing Script', cursive;
 }
 
-/* The starting CSS styles for the enter animation */
+
+.login-container {
+    height: 100vh;
+}
+
+.view-enter, .view-leave {
+  position: absolute;
+  -webkit-transition:all .5s ease-in-out;
+	-moz-transition:all .5s ease-in-out;
+	-o-transition:all .5s ease-in-out;
+	transition:all .5s ease-in-out;
+}
+
+.view-enter {
+  opacity: 0;
+  -webkit-transform:scale3d(0.5, 0.5, 0.5);
+  -moz-transform:scale3d(0.5, 0.5, 0.5);
+  transform:scale3d(0.5, 0.5, 0.5);
+}
+
+.view-enter-active {
+  opacity: 1;
+  -webkit-transform:scale3d(1, 1, 1);
+  -moz-transform:scale3d(1, 1, 1);
+  transform:scale3d(1, 1, 1);
+}
+
+.view-leave {
+  opacity: 1;
+  /*padding-left: 0px;*/  
+  -webkit-transform:translate3d(0, 0, 0);
+  -moz-transform:translate3d(0, 0, 0);
+  transform:translate3d(0, 0, 0);
+}
+
+.view-leave-active {
+  opacity: 0;
+  /*padding-left: 100px;*/
+  -webkit-transform:translate3d(100px, 0, 0);
+  -moz-transform:translate3d(100px, 0, 0);
+  transform:translate3d(100px, 0, 0);
+}
+
+/*.main.ng-enter {
+  transition:0.5s linear all;
+  opacity:0;
+}
+
+.main.ng-enter-active {
+    opacity: 1;
+}*/
+
 .fade.ng-enter {
   transition:0.5s linear all;
-  opacity:0;
+  opacity:1;
 }
 
-/* The finishing CSS styles for the enter animation */
+
 .fade.ng-enter.ng-enter-active {
-  opacity:1;
+  opacity: 0;
 }
 
-/* now the element will fade out before it is removed from the DOM */
-.fade.ng-leave {
-  transition:0.5s linear all;
-  opacity:1;
+button { margin-bottom: 10px; }
+
+
+.fade-in-out {
+  /*transition: 1s linear all !important;  */
+  opacity: 1;
 }
-.fade.ng-leave.ng-leave-active {
-  opacity:0;
+
+.fade-in-out.ng-enter {
+  transition: 0.5s linear all;  
+  opacity: 0;
+}
+.fade-in-out.ng-enter-active {
+  opacity: 1;
+}
+.fade-in-out.ng-hide {
+  opacity: 0;
+}
+.fade-in-out.ng-hide-active {
+  opacity: 0;
+}
+
+
+.main.ng-enter {
+    /* transition on enter for .5s */
+    transition: .5s;
+
+    /* start with opacity 0 (invisible) */
+    /*opacity: 1;*/
+}
+/* end 'enter' transition on main view */
+.main.ng-enter-active {
+    /* end with opacity 1 (fade in) */
+    opacity: 1;
+}
+
+.menu-list-button .md-toggle-icon {
+  transform: rotateZ(0deg);
+  -webkit-transform: rotateZ(0deg);
+}
+
+.menu-list-button .md-toggle-icon.clicked {
+  transform: rotateZ(180deg);
+  -webkit-transform: rotateZ(180deg);
+}
+
+.menu-list-button.clicked {
+  background-color: rgba(0, 0, 0, 1);
+}
+
+.md-toggle-icon.clicked {
+  transition: transform .3s ease-in-out;
+  -webkit-transition: -webkit-transform .3s ease-in-out;
+}
+
+.menu-toggle-list{
+    margin-left: 8px;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.submenu-list-button{
+    width: 90%;
+    height: 60px;
+    text-align: left !important;
+}
+
+.pullright{
+    margin-left: 180px;
 }

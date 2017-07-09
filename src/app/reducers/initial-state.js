@@ -1,15 +1,21 @@
 export default {
     todos: [],
     isLogIn: true,
-    pages:[
+    menuItems:[
         {
-            name: 'statisctic',
-            show: true
+            name: 'Group 1'
         },
         {
-            name: 'manage-lectures',
-            show: false
+            name: 'Group 2'
         },
-
+        {
+            name: 'Group 3'
+        },
+        {
+            name: 'Group 4'
+        },
+        {
+            name: 'Group 5'
+        },
     ]
 };
