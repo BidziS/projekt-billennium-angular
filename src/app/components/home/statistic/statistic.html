@@ -1,24 +1,25 @@
-<div ng-if="vm.showSite" class="fade" flex>
+<div flex>
     <md-card md-theme="darkgrey" md-theme-watch flex>
         <md-card-title>
             <md-card-title-text>
-                <span class="md-headline">Statystyki</span>
-                <span class="md-subhead">Large</span>
+                <span class="md-headline card-title">Statystyki</span>
             </md-card-title-text>
-            <md-card-title-media>
-                <canvas id="polar-area" class="chart chart-polar-area"
-                chart-data="vm.data" chart-labels="vm.labels" chart-options="options">
-                </canvas> 
-            </md-card-title-media>
+
         </md-card-title>
+        <md-card-container flex>
+            <canvas id="pie" class="chart chart-pie"
+            chart-data="vm.data" chart-labels="vm.labels" chart-options="options">
+            </canvas>
+            <canvas id="pie" class="chart chart-pie"
+            chart-data="vm.data" chart-labels="vm.labels" chart-options="options">
+            </canvas>
+            <canvas id="pie" class="chart chart-pie"
+            chart-data="vm.data" chart-labels="vm.labels" chart-options="options">
+            </canvas>   
+        </md-card-container>
         <md-card-actions layout="row" layout-align="end center">
             <md-button ng-click="vm.logInToSite()">Action 1</md-button>
             <md-button ng-click="vm.logOutToSite()">Action 2</md-button>
         </md-card-actions>
     </md-card>
 </div>
-<div ng-if="bool" class="fade">
-   Fade me in out
-</div>
-<button ng-click="bool=true">Fade In!</button>
-<button ng-click="bool=false">Fade Out!</button>

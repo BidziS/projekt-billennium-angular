@@ -191,3 +191,7 @@ button { margin-bottom: 10px; }
 .pullright{
     margin-left: 180px;
 }
+
+.card-title{
+    border-bottom: 1px solid gray;
+}
