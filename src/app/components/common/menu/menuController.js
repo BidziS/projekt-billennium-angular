@@ -1,9 +1,7 @@
 import {$state} from '@uirouter/angularjs';
-import {$ngRedux} from 'ng-redux';
 
 export default class MenuController{
-    constructor($state, $ngRedux){
-        this.unsubscribe = $ngRedux.connect(this.mapStateToThis)(this);
+    constructor($state){
         this.$state = $state;
         this.isOpen = false;
     }
@@ -12,15 +10,6 @@ export default class MenuController{
         this.isOpen = !this.isOpen;
     }
 
-    $onDestroy(){
-        this.unsubscribe();
-    }
-
-    mapStateToThis(state) {
-        return {
-            menu: state.menu
-        };
-    }
     goToSite(site){
         this.$state.go('home.' + site);
     }

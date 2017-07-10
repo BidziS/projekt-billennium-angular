@@ -1,45 +1,21 @@
-import TodoActions from '../../actions/todo.actions';
-import LoginActions from '../../actions/login.actions';
-import {$ngRedux} from 'ng-redux';
-import {MenuService} from '../common/sidenav/menuService';
-import {ServerService} from '../../api/serverService';
-
+import authService from './authService';
 
 export default class LoginController{
-    constructor($ngRedux, ServerService) {
-        this.todo = 'aaaa';
+    constructor(authService) {
         this.logInUserData = {
             login: '',
             password: ''
         }
-        this.unsubscribe = $ngRedux.connect(this.mapStateToThis, LoginActions)(this);
-        this.ServerService = ServerService;
+        this.AuthService = authService;
     }
 
-    submitTodo(){
-        this.addTodo(this.todo);
-        this.todo = '';
-    }
 
     logInToSite(){
-        this.ServerService.getMenuItems()
-                        .then(result => {this.logIn(this.result)})
-        
+        this.AuthService.setFollowers();
     }
-
+    
     logOutToSite(){
-        this.logOut();
+        this.AuthService.getFollowers();
     }
 
-    $onDestroy(){
-        this.unsubscribe();
-    }
-
-    mapStateToThis(state) {
-        return {
-            todos: state.todos,
-            isLogIn: state.isLogIn,
-            currentUser: state.login
-        };
-    }
 }

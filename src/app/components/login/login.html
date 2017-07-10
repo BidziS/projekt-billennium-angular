@@ -21,6 +21,10 @@
             Sign in
           <span class="glyphicon glyphicon-log-in"></span>
         </md-button>
+        <md-button ng-click="vm.logOutToSite()" ui-sref-active="active" type="submit" id="registerUser" value="Register" class="md-raised md-primary" aria-label="login" ng-disabled="personalityCheck.$invalid">
+            Sign out
+          <span class="glyphicon glyphicon-log-in"></span>
+        </md-button>
     </md-input-container>
   <md-dialog>Username or password is incorrect</md-dialog>
 </form>

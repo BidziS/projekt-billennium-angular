@@ -1,14 +1,12 @@
 import {$mdSidenav} from 'angular-material';
 import {$state} from '@uirouter/angularjs';
-import {$ngRedux} from 'ng-redux';
 
 export default class HeaderController{
-    constructor($mdSidenav, $state, $ngRedux){
+    constructor($mdSidenav, $state){
         this.title = 'header';
         this.$mdSidenav = $mdSidenav;
         this.$state = $state;
         this.isLoggedIn = false;
-        this.unsubscribe = $ngRedux.connect(this.mapStateToThis)(this);
     }
 
     $onInit(){
@@ -24,15 +22,7 @@ export default class HeaderController{
     logout(){
         this.$state.go('logout');
     }
-    $onDestroy(){
-        this.unsubscribe();
-    }
 
-    mapStateToThis(state) {
-        return {
-            isLogIn: state.login
-        };
-    }
     
 }
 
