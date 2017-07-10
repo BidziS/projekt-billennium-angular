@@ -4,6 +4,7 @@ import ngAnimate from 'angular-animate';
 import uiRouter from '@uirouter/angularjs';
 import ngRedux from 'ng-redux';
 import ngChart from 'angular-chart.js';
+import ReduxThunk from 'redux-thunk';
 
 import { RootReducer } from './reducers';
 
@@ -23,6 +24,10 @@ import StatisticComponent from './components/home/statistic/statisticComponent';
 import ManageLecturesComponent from './components/home/manageLectures/manage-lecturesComponent';
 import ManageGroupsComponent from './components/home/manageGroups/manage-groupsComponent';
 
+import MenuService from './components/common/sidenav/menuService';
+
+import ServerService from './api/serverService';
+
 export default angular.module('AppModule', [ngMaterial, uiRouter, ngRedux, ngAnimate, ngChart, CommonModule.name])
                     .config(routingConfigs)
                     .component('homeComponent', HomeComponent)
@@ -30,10 +35,22 @@ export default angular.module('AppModule', [ngMaterial, uiRouter, ngRedux, ngAni
                     .component('myStatistic', StatisticComponent)
                     .component('myManageLectures', ManageLecturesComponent)
                     .component('myManageGroups', ManageGroupsComponent)
-                    .component('logoutComponent', LogoutComponent);
+                    .component('logoutComponent', LogoutComponent)
+                    .service('menuService', MenuService)
+                    .service('serverService', ServerService)
+                    .factory('myInjectableMiddleware', myInjectableMiddleware);
 
 
+function myInjectableMiddleware($http) {
+  return store => next => action => {
+    if(action.type === 'LOGIN_USER_SUCCESS'){
+      $http.get('https://api.github.com/users/octocat/followers').then(result => {return result});      
+    }
 
+
+    next(action);
+  }
+}
 
 function routingConfigs($stateProvider, $urlRouterProvider, $ngReduxProvider) {
   $urlRouterProvider
@@ -83,5 +100,7 @@ function routingConfigs($stateProvider, $urlRouterProvider, $ngReduxProvider) {
     .state(homeManageLectures)
     .state(homeManageGroups)
     .state(logout);
-    $ngReduxProvider.createStoreWith(RootReducer);
+    $ngReduxProvider.createStoreWith(
+      RootReducer, [ReduxThunk, 'myInjectableMiddleware']
+      );
 };

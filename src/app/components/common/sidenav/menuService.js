@@ -7,4 +7,5 @@ export default class MenuService{
         return this.$http.get('https://api.github.com/users/octocat/followers');
     }
 }
+
 MenuService.$inject = ['$http']; 

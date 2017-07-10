@@ -17,5 +17,6 @@ export default {
         {
             name: 'Group 5'
         },
-    ]
+    ],
+    currentUser: {}
 };

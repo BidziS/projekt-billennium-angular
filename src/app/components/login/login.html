@@ -4,20 +4,20 @@
 <form name="personalityCheck" layout="column" layout-align="center center" flex=40>
   <md-input-container>
     <label>Username</label>
-    <input type="text" name="username" ng-model="username" required>
+    <input type="text" name="username" ng-model="vm.logInUserData.login" required>
     <div ng-messages="personalityCheck.username.$error">
       <div ng-message="required">Username is required!</div>
     </div>
   </md-input-container>
   <md-input-container>
   <label>Password</label>
-    <input type="password" name="password" ng-model="password" required>
+    <input type="password" name="password" ng-model="vm.logInUserData.password" required>
     <div ng-messages="personalityCheck.password.$error">
       <div ng-message="required">Password is required!</div>
     </div>
     </md-input-container>
     <md-input-container>
-        <md-button ui-sref="home" ui-sref-active="active" type="submit" id="registerUser" value="Register" class="md-raised md-primary" aria-label="login" ng-disabled="personalityCheck.$invalid">
+        <md-button ng-click="vm.logInToSite()" ui-sref-active="active" type="submit" id="registerUser" value="Register" class="md-raised md-primary" aria-label="login" ng-disabled="personalityCheck.$invalid">
             Sign in
           <span class="glyphicon glyphicon-log-in"></span>
         </md-button>
