@@ -1,12 +1,18 @@
+let header = {
+    headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+    }
+};
 export default class LoginService {
-    constructor ($q, $http) {
-        this.$q = $q;
+    constructor ($http) {
         this.$http = $http;
+        // this.url = 'http://10.24.14.219:5786/Token';
     }
 
-    static postResult(value) {
-        return this.$http.post('http://10.24.14.219:5786/Token', value);
+    postResult(value) {
+        console.log(value);
+        return this.$http.post('http://10.24.14.219:5786/Token', value, header);
     }
 }
 
-LoginService.$inject = ['$q', '$http'];
+LoginService.$inject = ['$http'];
