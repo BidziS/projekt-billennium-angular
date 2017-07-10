@@ -4,8 +4,8 @@ import {$state} from '@uirouter/angularjs';
 
 export default class SidenavController{
     constructor(MenuService, $state){
-        MenuService.getMenuItems()
-            .then(result => this.menu = result.data);
+        // // MenuService.getMenuItems()
+        //     .then(result => this.menu = result.data);
         this.menu = [];
         this.$state = $state;
         

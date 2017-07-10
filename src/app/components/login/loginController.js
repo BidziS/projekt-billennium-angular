@@ -1,26 +1,46 @@
 import TodoActions from '../../actions/todo.actions';
 import LoginActions from '../../actions/login.actions';
-import loginService from './loginservice';
+// import loginService from './loginservice';
 import {$ngRedux} from 'ng-redux';
 let obj = `grant_type=password&username=jan@abc.com&password=Qwerty123`;
 
 export default class LoginController {
     constructor(loginService) {
-        this.sth = {
-            "grant_type": "password",
-            "userName": "jan@abc.com",
-            "password": "Qwerty123"
-        };
+        // this.$state = $state;
+        this.username = '';
+        this.password = '';
+        // this.sth = {
+        //     "grant_type": "password",
+        //     "userName": "jan@abc.com",
+        //     "password": "Qwerty123"
+        // };
         this.LoginService = loginService;
-        console.log(this.LoginService);
-        this.LoginService.postResult(obj)
-            .then(response => {
-            this.wantFuckingResult = response.data;
-            console.log(this.wantFuckingResult.access_token);
-            console.log('dobrze jest');
-        });
         // this.todo = '';
         // this.unsubscribe = $ngRedux.connect(this.mapStateToThis, LoginActions)(this);
+    }
+
+    catchMeIfYouCan() {
+        this.sth = `grant_type=password&username=`+ this.username + `&password=`+ this.password;
+        // console.log(this.sth);
+        this.postMyPersonalities(this.sth);
+    }
+
+    postMyPersonalities(userData) {
+        this.LoginService.postResult(userData)
+            .then(response => {
+                this.wantFuckingResult = response.data;
+                this.role = this.wantFuckingResult.roles;
+                this.token = this.wantFuckingResult.access_token;
+                console.log(this.wantFuckingResult);
+                console.log(this.role);
+                if(this.wantFuckingResult.id !== '') {
+                    // $state.go('home');
+                    $cookies.put('token', this.token);
+                    console.log('poszło id');
+                } else {
+                    console.log('złe dane');
+                }
+            });
     }
     //
     // submitTodo(){
@@ -48,3 +68,4 @@ export default class LoginController {
     // }
 }
 
+// LoginController.$inject = ['$state'];

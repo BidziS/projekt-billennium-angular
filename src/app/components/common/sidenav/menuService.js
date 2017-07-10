@@ -3,8 +3,8 @@ export default class MenuService{
         this.$http = $http;
     }
 
-    getMenuItems(){
-        return this.$http.get('https://api.github.com/users/octocat/followers');
-    }
+    // getMenuItems(){
+    //     return this.$http.get('https://api.github.com/users/octocat/followers');
+    // }
 }
 MenuService.$inject = ['$http']; 

@@ -3,6 +3,7 @@ import ngMaterial from 'angular-material';
 import ngAnimate from 'angular-animate';
 import uiRouter from '@uirouter/angularjs';
 import ngRedux from 'ng-redux';
+import ngCookies from 'angular-cookies';
 
 import { RootReducer } from './reducers';
 
@@ -24,7 +25,7 @@ import StatisticComponent from './components/home/statistic/statisticComponent';
 import ManageLecturesComponent from './components/home/manageLectures/manage-lecturesComponent';
 import ManageGroupsComponent from './components/home/manageGroups/manage-groupsComponent';
 
-export default angular.module('AppModule', [ngMaterial, uiRouter, ngRedux, ngAnimate, CommonModule.name])
+export default angular.module('AppModule', [ngMaterial, uiRouter, ngRedux, ngAnimate, ngCookies, CommonModule.name])
                     .service('loginService', LoginService)
                     .config(routingConfigs)
                     .component('homeComponent', HomeComponent)
