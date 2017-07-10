@@ -4,4 +4,4 @@ module.exports = {
     template: require('./sidenav.html'),
     controller: SidenavController,
     controllerAs: 'vm'
-}
+};

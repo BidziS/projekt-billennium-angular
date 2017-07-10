@@ -15,6 +15,8 @@ import './style.css';
 import CommonModule from './components/common/commonModule';
 
 import LoginComponent from './components/login/loginComponent';
+import LoginService from './components/login/loginservice';
+
 import LogoutComponent from './components/logout/logoutComponent';
 import HomeComponent from './components/home/homeComponent';
 
@@ -23,6 +25,7 @@ import ManageLecturesComponent from './components/home/manageLectures/manage-lec
 import ManageGroupsComponent from './components/home/manageGroups/manage-groupsComponent';
 
 export default angular.module('AppModule', [ngMaterial, uiRouter, ngRedux, ngAnimate, CommonModule.name])
+                    .service('loginService', LoginService)
                     .config(routingConfigs)
                     .component('homeComponent', HomeComponent)
                     .component('loginComponent', LoginComponent)
@@ -30,9 +33,6 @@ export default angular.module('AppModule', [ngMaterial, uiRouter, ngRedux, ngAni
                     .component('myManageLectures', ManageLecturesComponent)
                     .component('myManageGroups', ManageGroupsComponent)
                     .component('logoutComponent', LogoutComponent);
-
-
-
 
 function routingConfigs($stateProvider, $urlRouterProvider, $ngReduxProvider) {
   $urlRouterProvider
@@ -42,37 +42,67 @@ function routingConfigs($stateProvider, $urlRouterProvider, $ngReduxProvider) {
   const login = {
     name: 'login',
     url: '/login',
-    component: 'loginComponent'
-  }
+    component: 'loginComponent',
+      resolve: {
+      show: function() {
+          console.log('login');
+      }
+      }
+  };
   const home = {
     name: 'home',
     url: '/home',
-    component: 'homeComponent'
-  }
+    component: 'homeComponent',
+      resolve: {
+          show: function () {
+              console.log('home');
+          }
+      }
+  };
 
   const homeStatistic = {
     name: 'home.statistic',
     url: '/statistic',
-    component: 'myStatistic'
-  }
+    component: 'myStatistic',
+      resolve: {
+          show: function () {
+              console.log('statistic');
+          }
+      }
+  };
 
   const homeManageLectures = {
     name: 'home.manage-groups',
     url: '/manage-groups',
-    component: 'myManageGroups'
-  }
+    component: 'myManageGroups',
+      resolve: {
+          show: function () {
+              console.log('groups');
+          }
+      }
+  };
 
   const homeManageGroups = {
     name: 'home.manage-lectures',
     url: '/manage-lectures',
-    component: 'myManageLectures'
-  }
+    component: 'myManageLectures',
+      resolve: {
+          show: function () {
+              console.log('lecturers');
+          }
+      }
+  };
 
   const logout = {
     name: 'logout',
     url: '/logout',
-    component: 'logoutComponent'
-  }
+    component: 'logoutComponent',
+      resolve: {
+          show: function () {
+              console.log('logout');
+          }
+      }
+  };
   
 
   $stateProvider
@@ -83,4 +113,4 @@ function routingConfigs($stateProvider, $urlRouterProvider, $ngReduxProvider) {
     .state(homeManageGroups)
     .state(logout);
     $ngReduxProvider.createStoreWith(RootReducer);
-};
+}

@@ -11,9 +11,9 @@ export default class HeaderController{
         this.unsubscribe = $ngRedux.connect(this.mapStateToThis)(this);
     }
 
-    $onInit(){
-        console.log('y');
-    }
+    // $onInit(){
+    //     console.log('y');
+    // }
 
     toggleMenu(){
         this.$mdSidenav('left').toggle();

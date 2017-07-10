@@ -1,9 +1,23 @@
 import TodoActions from '../../actions/todo.actions';
 import LoginActions from '../../actions/login.actions';
+import LoginService from './loginservice';
 import {$ngRedux} from 'ng-redux';
 
-export default class LoginController{
+export default class LoginController {
     constructor($ngRedux) {
+        this.sth = {
+            "grant_type": "password",
+            "userName": "jan@abc.pl",
+            "password": "Qwerty123"
+        };
+        this.elo = LoginService;
+        // console.log(this.LoginService);
+        console.log(this.sth);
+        LoginService.postResult(this.sth);
+            // .then(response => {
+            // this.wantFuckingResult = response.data;
+            // console.log('dobrze jest');
+        // });
         this.todo = '';
         this.unsubscribe = $ngRedux.connect(this.mapStateToThis, LoginActions)(this);
     }
