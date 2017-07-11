@@ -9,9 +9,9 @@ export default class HeaderController{
         this.isLoggedIn = false;
     }
 
-    $onInit(){
-        console.log('y');
-    }
+    // $onInit(){
+    //     console.log('y');
+    // }
 
     toggleMenu(){
         this.$mdSidenav('left').toggle();

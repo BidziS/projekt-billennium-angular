@@ -14,6 +14,8 @@ import './style.css';
 import CommonModule from './components/common/commonModule';
 
 import LoginComponent from './components/login/loginComponent';
+import LoginService from './components/login/loginservice';
+
 import LogoutComponent from './components/logout/logoutComponent';
 import HomeComponent from './components/home/homeComponent';
 
@@ -35,7 +37,6 @@ export default angular.module('AppModule', [ngMaterial, uiRouter, ngAnimate, ngC
                     .component('logoutComponent', LogoutComponent)
                     .service('menuService', MenuService)
                     .service('authService', AuthService);
-
 function routingConfigs($stateProvider, $urlRouterProvider) {
   $urlRouterProvider
     .when('/home', '/home/statistic')
@@ -84,4 +85,4 @@ function routingConfigs($stateProvider, $urlRouterProvider) {
     .state(homeManageLectures)
     .state(homeManageGroups)
     .state(logout);
-};
+}
