@@ -26,6 +26,8 @@ import ManageGroupsComponent from './components/home/manageGroups/manage-groupsC
 import MenuService from './components/common/sidenav/menuService';
 import AuthService from './components/login/authService';
 
+import TableComponent from './components/table/tableComponent';
+
 
 export default angular.module('AppModule', [ngMaterial, uiRouter, ngAnimate, ngChart, CommonModule.name])
                     .config(routingConfigs)
@@ -35,6 +37,7 @@ export default angular.module('AppModule', [ngMaterial, uiRouter, ngAnimate, ngC
                     .component('myManageLectures', ManageLecturesComponent)
                     .component('myManageGroups', ManageGroupsComponent)
                     .component('logoutComponent', LogoutComponent)
+                    .component('tableComponent', TableComponent)
                     .service('menuService', MenuService)
                     .service('authService', AuthService)
                     .service('loginService', LoginService);
@@ -47,37 +50,36 @@ function routingConfigs($stateProvider, $urlRouterProvider) {
     name: 'login',
     url: '/login',
     component: 'loginComponent'
-  }
+  };
+
   const home = {
     name: 'home',
     url: '/home',
     component: 'homeComponent'
-  }
+  };
 
   const homeStatistic = {
     name: 'home.statistic',
     url: '/statistic',
     component: 'myStatistic'
-  }
+  };
 
   const homeManageLectures = {
+    name: 'home.manage-lecturers',
+    url: '/manage-lecturers',
+    component: 'myManageLecturers'
+  };
+
+  const homeManageGroups = {
     name: 'home.manage-groups',
     url: '/manage-groups',
     component: 'myManageGroups'
-  }
-
-  const homeManageGroups = {
-    name: 'home.manage-lectures',
-    url: '/manage-lectures',
-    component: 'myManageLectures'
-  }
-
+  };
   const logout = {
     name: 'logout',
     url: '/logout',
     component: 'logoutComponent'
-  }
-  
+  };
 
   $stateProvider
     .state(login)
