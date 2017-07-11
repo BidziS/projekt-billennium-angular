@@ -1,68 +1,51 @@
-import authService from './authService';
+// import authService from './authService';
 // import loginService from './loginservice';
+// import $state from '@uirouter/angularjs';
+// import $mdToast from 'angular-material';
 
 export default class LoginController {
-    constructor(loginService) {
-        // this.$state = $state;
+    constructor($state, loginService, $mdToast, $timeout) {
+        this.$state = $state;
+        this.$mdToast = $mdToast;
+        this.$timeout = $timeout;
         this.username = '';
         this.password = '';
-        // this.sth = {
-        //     "grant_type": "password",
-        //     "userName": "jan@abc.com",
-        //     "password": "Qwerty123"
-        // };
         this.LoginService = loginService;
-        // this.todo = '';
-        // this.unsubscribe = $ngRedux.connect(this.mapStateToThis, LoginActions)(this);
+        this.loading = false;
     }
 
     catchMeIfYouCan() {
         this.sth = `grant_type=password&username=`+ this.username + `&password=`+ this.password;
-        // console.log(this.sth);
         this.postMyPersonalities(this.sth);
     }
 
     postMyPersonalities(userData) {
-        this.LoginService.postResult(userData)
-            .then(response => {
-                this.wantFuckingResult = response.data;
-                this.role = this.wantFuckingResult.roles;
-                this.token = this.wantFuckingResult.access_token;
-                console.log(this.wantFuckingResult);
-                console.log(this.role);
-                if(this.wantFuckingResult.id !== '') {
-                    // $state.go('home');
-                    // $cookies.put('token', this.token);
-                    console.log('poszło id');
-                } else {
+        this.loading = true;
+        this.$timeout(() => {
+            this.LoginService.postResult(userData)
+                .then(response => {
+                    this.wantFuckingResult = response.data;
+                    this.role = this.wantFuckingResult.roles;
+                    this.token = this.wantFuckingResult.access_token;
+                    console.log(this.wantFuckingResult);
+                    console.log(this.role);
+                    this.$state.go('home');
+                    this.loading = false;
+                })
+                .catch(() => {
                     console.log('złe dane');
-                }
-            });
+                    this.showAlert();
+                    this.loading = false;
+                });
+        },3000);
     }
-    //
-    // submitTodo(){
-    //     this.addTodo(this.todo);
-    //     this.todo = '';
-    // }
-    //
-    // logInToSite(){
-    //     this.logIn();
-    // }
-    //
-    // logOutToSite(){
-    //     this.logOut();
-    // }
-    //
-    // $onDestroy(){
-    //     this.unsubscribe();
-    // }
-    //
-    // mapStateToThis(state) {
-    //     return {
-    //         todos: state.todos,
-    //         isLogIn: state.isLogIn
-    //     };
-    // }
-}
 
-// LoginController.$inject = ['$state'];
+    showAlert() {
+        this.$mdToast.show(
+            this.$mdToast.simple()
+                .textContent('Username or password is incorrect')
+                .position('top center')
+                .hideDelay(4000)
+        );
+    }
+}
