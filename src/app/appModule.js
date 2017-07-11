@@ -36,7 +36,8 @@ export default angular.module('AppModule', [ngMaterial, uiRouter, ngAnimate, ngC
                     .component('myManageGroups', ManageGroupsComponent)
                     .component('logoutComponent', LogoutComponent)
                     .service('menuService', MenuService)
-                    .service('authService', AuthService);
+                    .service('authService', AuthService)
+                    .service('loginService', LoginService);
 function routingConfigs($stateProvider, $urlRouterProvider) {
   $urlRouterProvider
     .when('/home', '/home/statistic')
