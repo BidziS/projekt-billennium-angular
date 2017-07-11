@@ -35,7 +35,7 @@ export default class LoginController {
                 console.log(this.role);
                 if(this.wantFuckingResult.id !== '') {
                     // $state.go('home');
-                    $cookies.put('token', this.token);
+                    // $cookies.put('token', this.token);
                     console.log('poszło id');
                 } else {
                     console.log('złe dane');
