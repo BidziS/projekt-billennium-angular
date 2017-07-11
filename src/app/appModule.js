@@ -22,9 +22,13 @@ import HomeComponent from './components/home/homeComponent';
 import StatisticComponent from './components/home/statistic/statisticComponent';
 import ManageLecturesComponent from './components/home/manageLectures/manage-lecturesComponent';
 import ManageGroupsComponent from './components/home/manageGroups/manage-groupsComponent';
+import GenericComponent from './components/common/generic/genericComponent';
 
 import MenuService from './components/common/sidenav/menuService';
 import AuthService from './components/login/authService';
+
+import ApiService from './api/apiService';
+import SessionStorageService from './api/sessionStorageService';
 
 
 export default angular.module('AppModule', [ngMaterial, uiRouter, ngAnimate, ngChart, CommonModule.name])
@@ -35,9 +39,13 @@ export default angular.module('AppModule', [ngMaterial, uiRouter, ngAnimate, ngC
                     .component('myManageLectures', ManageLecturesComponent)
                     .component('myManageGroups', ManageGroupsComponent)
                     .component('logoutComponent', LogoutComponent)
+                    .component('genericComponent', GenericComponent)
                     .service('menuService', MenuService)
                     .service('authService', AuthService)
-                    .service('loginService', LoginService);
+                    .service('loginService', LoginService)
+                    .service('apiService', ApiService)
+                    .service('sessionStorageService', SessionStorageService);
+
 function routingConfigs($stateProvider, $urlRouterProvider) {
   $urlRouterProvider
     .when('/home', '/home/statistic')
@@ -60,16 +68,24 @@ function routingConfigs($stateProvider, $urlRouterProvider) {
     component: 'myStatistic'
   }
 
-  const homeManageLectures = {
+  const homeManageGroups = {
     name: 'home.manage-groups',
     url: '/manage-groups',
-    component: 'myManageGroups'
+    component: 'genericComponent',
+    resolve: { path: function(){ return 'api/Groups' } }
   }
 
-  const homeManageGroups = {
+  const homeManageLectures = {
     name: 'home.manage-lectures',
     url: '/manage-lectures',
-    component: 'myManageLectures'
+    component: 'genericComponent',
+    resolve: { path: function(){ return 'api/Lecturers' } }
+  }
+  const homeManageTasks = {
+    name: 'home.manage-tasks',
+    url: '/manage-tasks',
+    component: 'genericComponent',
+    resolve: { path: function(){ return 'api/Groups' } }
   }
 
   const logout = {
@@ -85,5 +101,6 @@ function routingConfigs($stateProvider, $urlRouterProvider) {
     .state(homeStatistic)
     .state(homeManageLectures)
     .state(homeManageGroups)
+    .state(homeManageTasks)
     .state(logout);
 }

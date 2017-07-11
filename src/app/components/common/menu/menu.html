@@ -3,9 +3,14 @@
      <span aria-hidden="true" class="pullright fa fa-chevron-down md-toggle-icon" ng-class="{'clicked': vm.isOpen === true}"></span>
 </md-button>
 <ul ng-show="vm.isOpen" class="menu-toggle-list ">
+    <li>
+        <md-button class="submenu-list-button" ui-sref-active="active" ng-click="vm.goToSite('manage-tasks')">
+            Wszystkie grupy
+        </md-button>
+    </li>
     <li ng-repeat="item in vm.menu">
         <md-button class="submenu-list-button" ui-sref-active="active" ng-click="vm.goToSite('statistic')">
-            {{item.name}}
+            {{item.Name}}
         </md-button>
     </li>
 </ul>

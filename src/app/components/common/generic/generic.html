@@ -1,0 +1,30 @@
+<div>
+  <span class="table-title">Group</span>
+  <md-button class="md-raised md-primary">Dodaj</md-button>
+</div>
+
+<md-content layout="column" flex="flex" class="table-content">
+<table class="md-table" md-colresize="md-colresize">
+  <thead>
+    <tr class="md-table-headers-row">
+      <th class="md-table-header" ng-repeat="h in generic.columnsName"><a href="#">{{h}} <i class="ion-android-arrow-dropup"></i><i class="ion-android-arrow-dropdown" ng-show="!reverse &amp;&amp; h.field == predicate"></i></a><span>{{h.name}}</span></th>
+      <th class="md-table-header"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="md-table-content-row" ng-repeat="c in generic.data">
+      <!--<td>
+        <div class="md-table-thumbs" ng-repeat="h in generic.columnsName">
+          <div>{{c[h]}}</div>
+        </div>
+      </td>-->
+        <td class="md-table-content" ng-repeat="h in generic.columnsName" ng-class="customClass[h.field]">{{c[h]}}</td>
+        <!--<td class="md-table-td-more">
+          <md-button aria-label="Info"><i class="ion-android-more-vertical"></i></md-button>
+        </td>-->
+        <td><md-button class="md-raised md-primary">Edytuj</md-button><md-button class="md-raised md-warn">Usuń</md-button></td>
+    </tr>
+
+  </tbody>
+</table>
+</md-content>
