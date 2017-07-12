@@ -228,3 +228,16 @@ md-progress-circular {
     position: absolute;
     top: 130px;
 }
+
+.modal-container h2 {
+    margin: 15px;
+}
+
+.modal-container md-toolbar {
+    position: relative;
+}
+
+.modal-container md-input-container {
+    margin: 30px 20px !important;
+    font-size: 20px;
+}

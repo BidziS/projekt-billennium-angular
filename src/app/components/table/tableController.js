@@ -1,14 +1,14 @@
 export default class TableController {
-    constructor() {
-
+    constructor($mdDialog) {
+        this.$mdDialog = $mdDialog;
     }
     showModal() {
-        $mdDialog.show({
+        this.$mdDialog.show({
             controller: TableController(),
-            templateUrl: 'modal.html'
+            templateUrl: '../home/manageLectures/modal.html'
         })
     }
     hideModal() {
-        $mdDialog.hide();
+        this.$mdDialog.hide();
     };
 }

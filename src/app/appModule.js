@@ -65,9 +65,9 @@ function routingConfigs($stateProvider, $urlRouterProvider) {
   };
 
   const homeManageLectures = {
-    name: 'home.manage-lecturers',
-    url: '/manage-lecturers',
-    component: 'myManageLecturers'
+    name: 'home.manage-lectures',
+    url: '/manage-lectures',
+    component: 'myManageLectures'
   };
 
   const homeManageGroups = {

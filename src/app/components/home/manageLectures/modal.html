@@ -1,20 +1,24 @@
-<md-dialog>
-    <form ng-cloak>
+<md-dialog class="modal-container">
+    <form>
         <md-toolbar>
             <h2>Add lecturer</h2>
         </md-toolbar>
-        <md-dialog-content>
+        <md-dialog-content flex>
             <md-input-container>
-                <input type="text">
+                <input type="text" placeholder="first name">
+
+            </md-input-container>
+            <md-input-container>
+            <input type="text" placeholder="last name">
             </md-input-container>
         </md-dialog-content>
 
         <md-dialog-actions layout="row">
-            <md-button ng-click="table.hideModal()">
+            <md-button ng-click="lectures.confirmModal()">
                 Confirm
             </md-button>
             <span flex></span>
-            <md-button ng-click="table.hideModal()">
+            <md-button ng-click="lectures.cancelModal()">
                 Cancel
             </md-button>
         </md-dialog-actions>
