@@ -52,6 +52,7 @@ export default class ApiService {
                 resolve(response.data);
             }).catch( e => {
                 console.log(e);
+                reject(e);
             })
         })
         
