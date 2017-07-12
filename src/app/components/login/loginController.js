@@ -10,6 +10,12 @@ export default class LoginController {
         }
         this.LoginService = loginService;
         this.ApiService = apiService;
+        this.lecturer = {
+            name: 'Andrzej',
+            email: 'andaw@gmail.com',
+            password: 'qwerty',
+            confirmPassword: 'qwerty'
+        }
     }
 
 
@@ -19,6 +25,10 @@ export default class LoginController {
     getAllLecturers(){
         this.ApiService.getRequest('api/Groups').then(response => {console.log(response.data)});
     }
-    
+    addLecturer(){
+        this.ApiService.postRequest('api/Lecturers', this.lecturer)
+                        .then(response => {console.log(response.data)})
+                        .catch(err => {console.log(err.message)});
+    }
 
 }

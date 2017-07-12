@@ -4,7 +4,6 @@ import ngAnimate from 'angular-animate';
 import uiRouter from '@uirouter/angularjs';
 import ngChart from 'angular-chart.js';
 
-
 import '../../node_modules/angular-material/angular-material.css';
 import '../../node_modules/font-awesome/css/font-awesome.min.css';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
@@ -27,8 +26,10 @@ import GenericComponent from './components/common/generic/genericComponent';
 import MenuService from './components/common/sidenav/menuService';
 import AuthService from './components/login/authService';
 
+
 import ApiService from './api/apiService';
 import SessionStorageService from './api/sessionStorageService';
+import DataStoreService from './api/dataStoreService';
 
 
 export default angular.module('AppModule', [ngMaterial, uiRouter, ngAnimate, ngChart, CommonModule.name])
@@ -44,7 +45,8 @@ export default angular.module('AppModule', [ngMaterial, uiRouter, ngAnimate, ngC
                     .service('authService', AuthService)
                     .service('loginService', LoginService)
                     .service('apiService', ApiService)
-                    .service('sessionStorageService', SessionStorageService);
+                    .service('sessionStorageService', SessionStorageService)
+                    .service('dataStoreService', DataStoreService);
 
 function routingConfigs($stateProvider, $urlRouterProvider) {
   $urlRouterProvider
@@ -72,20 +74,20 @@ function routingConfigs($stateProvider, $urlRouterProvider) {
     name: 'home.manage-groups',
     url: '/manage-groups',
     component: 'genericComponent',
-    resolve: { path: function(){ return 'api/Groups' } }
+    resolve: { path: function(){ return 'Groups' } }
   }
 
   const homeManageLectures = {
     name: 'home.manage-lectures',
     url: '/manage-lectures',
     component: 'genericComponent',
-    resolve: { path: function(){ return 'api/Lecturers' } }
+    resolve: { path: function(){ return 'Lecturers' } }
   }
   const homeManageTasks = {
     name: 'home.manage-tasks',
     url: '/manage-tasks',
     component: 'genericComponent',
-    resolve: { path: function(){ return 'api/Groups' } }
+    resolve: { path: function(){ return 'Groups' } }
   }
 
   const logout = {

@@ -1,12 +1,19 @@
-import {$state} from '@uirouter/angularjs';
+import {$state, $scope} from '@uirouter/angularjs';
 import apiService from '../../../api/apiService';
+import dataStoreService from '../../../api/dataStoreService';
 
 export default class MenuController{
-    constructor($state, apiService){
+    constructor($state, apiService, dataStoreService, $scope){
         this.$state = $state;
         this.ApiService = apiService;
+        this.DataStoreService = dataStoreService;
         this.isOpen = false;
         this.menu = []; 
+        this.$scope = $scope;
+        let dataStorage = this.DataStoreService;
+        this.$scope.$watch(function(){return dataStorage.getGroups();}, (value) => {
+            console.log('działa');
+        });
     }
 
     $onInit(){

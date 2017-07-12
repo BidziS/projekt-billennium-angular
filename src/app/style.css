@@ -325,3 +325,22 @@ md-input-container.md-default-theme .md-input {
     font-size: 32px;
     margin: 10px;
 }
+
+.chart-statistic{
+  /*min-height: 300px;*/
+  min-width: 550px;
+  text-align: center;
+  padding: 30px !important;
+}
+
+.table-md-cart-container{
+    padding: 15px;
+}
+
+@media all and (max-width: 640px){
+  .chart-statistic{
+    /*min-height: 300px;*/
+    min-width: 300px;
+    text-align: center;
+  }
+}
