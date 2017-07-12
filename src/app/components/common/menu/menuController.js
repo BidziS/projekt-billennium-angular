@@ -1,9 +1,16 @@
 import {$state} from '@uirouter/angularjs';
+import apiService from '../../../api/apiService';
 
 export default class MenuController{
-    constructor($state){
+    constructor($state, apiService){
         this.$state = $state;
+        this.ApiService = apiService;
         this.isOpen = false;
+        this.menu = []; 
+    }
+
+    $onInit(){
+        this.getGruops();
     }
 
     toggleSubmenu(){
@@ -13,6 +20,11 @@ export default class MenuController{
     goToSite(site){
         this.$state.go('home.' + site);
     }
-}
 
-//HeaderController.$inject = ['$mdSidenav', '$state']; 
+    getGruops(){
+        this.ApiService.getRequest('api/Groups').then(response => {
+            console.log(response.data);
+            this.menu = response.data.Data.Entries;
+        });
+    }
+}

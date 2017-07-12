@@ -1,6 +1,7 @@
 // import authService from './authService';
-// import loginService from './loginservice';
+import apiService from '../../api/apiService';
 // import $state from '@uirouter/angularjs';
+import loginService from './loginservice';
 // import $mdToast from 'angular-material';
 
 export default class LoginController {
@@ -12,10 +13,12 @@ export default class LoginController {
         this.password = '';
         this.LoginService = loginService;
         this.loading = false;
-    }
+        this.ApiService = apiService;
 
+    logInTosite(){
     postMyPersonalities(userData) {
         this.loading = true;
+        this.ApiService.logInToService(this.user).then(response => {console.log(response)});
         this.$timeout(() => {
             this.LoginService.postResult(userData)
                 .then(response => {
@@ -44,8 +47,10 @@ export default class LoginController {
     requestAccess() {
         this.sth = `grant_type=password&username=`+ this.username + `&password=`+ this.password;
         this.postMyPersonalities(this.sth);
+    getAllLecturers(){
+        this.ApiService.getRequest('api/Groups').then(response => {console.log(response.data)});
     }
-
+    
     badRequest() {
         this.$mdToast.show(
             this.$mdToast.simple()
