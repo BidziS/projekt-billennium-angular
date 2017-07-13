@@ -6,6 +6,7 @@ export default class GenericController {
         this.$mdDialog = $mdDialog;
         this.modalHeader = '';
         this.isLoading = true;
+        // this.setDataToTable();
     }
 
     $onInit(){
@@ -47,4 +48,3 @@ export default class GenericController {
     }
 
 }
-

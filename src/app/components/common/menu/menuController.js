@@ -6,7 +6,8 @@ export default class MenuController{
         this.$state = $state;
         this.ApiService = apiService;
         this.isOpen = false;
-        this.menu = []; 
+        this.menu = [];
+        this.tableHeader = '';
     }
 
     $onInit(){
@@ -19,6 +20,7 @@ export default class MenuController{
 
     goToSite(site){
         this.$state.go('home.' + site);
+        this.tableHeader = 'Groups';
     }
 
     getGruops(){
