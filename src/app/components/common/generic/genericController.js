@@ -5,6 +5,7 @@ export default class GenericController {
         this.ApiService = apiService;
         this.$mdDialog = $mdDialog;
         this.modalHeader = '';
+        this.isLoading = true;
     }
 
     $onInit(){
@@ -23,6 +24,7 @@ export default class GenericController {
                     i--;
                 }
             }
+            this.isLoading = false;
         });
     }
 

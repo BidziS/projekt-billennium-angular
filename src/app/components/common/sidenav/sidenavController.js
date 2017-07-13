@@ -8,7 +8,6 @@ export default class SidenavController{
         //     .then(result => this.menu = result.data);
         this.menu = [];
         this.$state = $state;
-        
     }
 
     check(){
@@ -18,9 +17,6 @@ export default class SidenavController{
     goToSite(site){
         this.$state.go('home.' + site);
     }
-
-
-
 }
 
 //SidenavController.$inject = ['$state'];

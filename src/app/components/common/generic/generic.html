@@ -1,9 +1,9 @@
-<div>
+<div ng-if="!generic.isLoading">
   <span class="table-title">Group</span>
   <md-button class="md-raised md-primary" ng-click="generic.modalOpen('Add')">Dodaj</md-button>
 </div>
 
-<md-content layout="column" flex="flex" class="table-content">
+<md-content ng-if="!generic.isLoading" layout="column" flex="flex" class="table-content">
 <table class="md-table" md-colresize="md-colresize">
   <thead>
     <tr class="md-table-headers-row">
@@ -36,4 +36,6 @@
   </tbody>
 </table>
 </md-content>
-<md-progress-circular class="requestLoading" md-diameter="80" md-mode="indeterminate"></md-progress-circular>
+<div class="loader" layout="row" ng-if="generic.isLoading" layout-sm="column" layout-align="center center" aria-label="wait">
+  <md-progress-circular md-diameter="80" md-mode="indeterminate"></md-progress-circular>
+</div>

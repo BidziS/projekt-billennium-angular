@@ -361,12 +361,9 @@ md-toast.md-center {
     top: 130px;
 }
 
-
-
-.requestLoading md-progress-circular {
-    position: absolute;
-    top: 500px;
-    left: 100px;
+.loader {
+    width: 100%;
+    height: 50vh;
 }
 
 .modal-container h2 {
