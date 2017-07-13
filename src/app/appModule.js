@@ -23,12 +23,14 @@ import StatisticComponent from './components/home/statistic/statisticComponent';
 import ManageLecturesComponent from './components/home/manageLectures/manage-lecturesComponent';
 import ManageGroupsComponent from './components/home/manageGroups/manage-groupsComponent';
 import GenericComponent from './components/common/generic/genericComponent';
+import ModalController from './components/common/generic/modalController';
 
 import MenuService from './components/common/sidenav/menuService';
 import AuthService from './components/login/authService';
 
 import ApiService from './api/apiService';
 import SessionStorageService from './api/sessionStorageService';
+
 
 
 export default angular.module('AppModule', [ngMaterial, uiRouter, ngAnimate, ngChart, CommonModule.name])
@@ -44,7 +46,8 @@ export default angular.module('AppModule', [ngMaterial, uiRouter, ngAnimate, ngC
                     .service('authService', AuthService)
                     .service('loginService', LoginService)
                     .service('apiService', ApiService)
-                    .service('sessionStorageService', SessionStorageService);
+                    .service('sessionStorageService', SessionStorageService)
+.controller('ModalController',ModalController);
 
 function routingConfigs($stateProvider, $urlRouterProvider) {
   $urlRouterProvider

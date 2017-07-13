@@ -1,8 +1,10 @@
 import apiService from '../../../api/apiService';
 
-export default class GenericController{
-    constructor(apiService){
-        this.ApiService = apiService;        
+export default class GenericController {
+    constructor(apiService, $mdDialog){
+        this.ApiService = apiService;
+        this.$mdDialog = $mdDialog;
+        this.modalHeader = '';
     }
 
     $onInit(){
@@ -22,4 +24,22 @@ export default class GenericController{
             }
         });
     }
+
+    modalOpen(text) {
+        console.log(text);
+        this.modalHeader = text;
+        this.$mdDialog.show({
+            controller: 'ModalController',
+            controllerAs: 'modal',
+            clickOutsideToClose: true,
+            template: require('./modal.html'),
+            locals: {
+                modalHeader: this.modalHeader,
+                columnsName: this.columnsName
+            }
+        });
+
+    }
+
 }
+

@@ -1,6 +1,8 @@
 <div>
   <span class="table-title">Group</span>
-  <md-button class="md-raised md-primary">Dodaj</md-button>
+  <md-button class="md-raised md-primary" ng-click="generic.modalOpen('Add')">Dodaj</md-button>
+  <!--<md-button class="md-raised md-primary" ng-click="generic.modalOpen('Edit')">Edytuj</md-button>-->
+  <!--<md-button class="md-raised md-warn">Usuń</md-button></td>-->
 </div>
 
 <md-content layout="column" flex="flex" class="table-content">
@@ -22,7 +24,10 @@
         <!--<td class="md-table-td-more">
           <md-button aria-label="Info"><i class="ion-android-more-vertical"></i></md-button>
         </td>-->
-        <td><md-button class="md-raised md-primary">Edytuj</md-button><md-button class="md-raised md-warn">Usuń</md-button></td>
+        <td>
+          <md-button class="md-raised md-primary" ng-click="generic.modalOpen('Edit')">Edytuj</md-button>
+          <md-button class="md-raised md-warn">Usuń</md-button>
+        </td>
     </tr>
 
   </tbody>

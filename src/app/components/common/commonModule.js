@@ -6,6 +6,7 @@ import SidenavComponent from './sidenav/sidenavComponent';
 import UserDetailsComponent from './user-details/user-detailsComponent';
 import MenuComponent from './menu/menuComponent';
 
+
 import MenuService from './sidenav/menuService';
 
 export default angular.module('CommonModule', [ngMaterial])
@@ -14,3 +15,4 @@ export default angular.module('CommonModule', [ngMaterial])
                     .component('mySidenav', SidenavComponent)
                     .component('myMenu', MenuComponent)
                     .component('myUserDetails', UserDetailsComponent);
+

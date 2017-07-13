@@ -1,0 +1,23 @@
+<md-dialog class="modal-container">
+        <form ng-submit="modal.submit()">
+            <md-toolbar>
+               <h2 ng-bind="modal.modalHeader"></h2>
+            </md-toolbar>
+           <md-dialog-content flex>
+               <md-input-container ng-repeat="h in modal.columnsName | limitTo: modal.columnsName.length : 1">
+                   <label>{{ h }}</label>
+                   <input type="text">
+               </md-input-container>
+            </md-dialog-content>
+
+            <md-dialog-actions layout="row">
+                <md-button type="submit" ng-click="modal.request()">
+                    Confirm
+                </md-button>
+                <span flex></span>
+                <md-button type="submit">
+                    Cancel
+                </md-button>
+            </md-dialog-actions>
+        </form>
+    </md-dialog>
