@@ -14,6 +14,7 @@ export default class GenericController {
     setDataToTable(){
         this.ApiService.getRequest(this.path).then(response => {
             this.data = response.data.Data.Entries;
+            console.log(this.data);
             this.columnsName = Object.keys(this.data[0]);
             for(let i = 0; i < this.columnsName.length; i++){
                 let index = this.columnsName[i];
@@ -25,7 +26,8 @@ export default class GenericController {
         });
     }
 
-    modalOpen(text) {
+    modalOpen(text, value) {
+        console.log(value);
         console.log(text);
         this.modalHeader = text;
         this.$mdDialog.show({
