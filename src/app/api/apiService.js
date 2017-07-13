@@ -10,7 +10,7 @@ export default class ApiService {
         this.user = {
             username: '',
             password: ''
-        }
+        };
         this.token = {
             token_type: '',
             access_token: ''
@@ -20,7 +20,7 @@ export default class ApiService {
                 "Content-Type": "application/json",
                 "Authorization": `${this.token.token_type} ${this.token.access_token}`
             }
-        }
+        };
         this.authorizationHeader = {
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
@@ -33,9 +33,14 @@ export default class ApiService {
         return this.$http.get(this.url + path, this.defaultHeader);
     }
 
-    postRequest(path, data){
+    postRequest(path, data, id){
         this.setDefaultHeader();
-        return this.$http.post(this.url + path, data, this.defaultHeader);
+        return this.$http.put(this.url + path + id, data, this.defaultHeader);
+    }
+
+    putRequest(path, data, id){
+        this.setDefaultHeader();
+        return this.$http.put(this.url + path + id, data, this.defaultHeader);
     }
 
     deleteRequest(path){

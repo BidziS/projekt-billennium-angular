@@ -356,9 +356,17 @@ md-toast.md-center {
     transform: translate3d(-50%, 0, 0);
 }
 
-md-progress-circular {
+.login-container md-progress-circular {
     position: absolute;
     top: 130px;
+}
+
+
+
+.requestLoading md-progress-circular {
+    position: absolute;
+    top: 500px;
+    left: 100px;
 }
 
 .modal-container h2 {

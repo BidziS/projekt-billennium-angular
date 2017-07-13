@@ -1,12 +1,12 @@
 <md-dialog class="modal-container">
-        <form ng-submit="modal.submit()">
+        <form>
             <md-toolbar>
                <h2 ng-bind="modal.modalHeader"></h2>
             </md-toolbar>
            <md-dialog-content flex>
-               <md-input-container ng-repeat="h in modal.columnsName | limitTo: modal.columnsName.length : 1">
-                   <label>{{ h }}</label>
-                   <input type="text">
+               <md-input-container ng-if="key!=='Id'" ng-repeat="key in modal.columnsName">
+                   <label ng-bind="key"></label>
+                   <input type="text" ng-model="modal.selectedElement[key]">
                </md-input-container>
             </md-dialog-content>
 
@@ -15,7 +15,7 @@
                     Confirm
                 </md-button>
                 <span flex></span>
-                <md-button type="submit">
+                <md-button type="submit" ng-click="modal.cancel()">
                     Cancel
                 </md-button>
             </md-dialog-actions>

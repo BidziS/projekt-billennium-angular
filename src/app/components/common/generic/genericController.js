@@ -27,8 +27,7 @@ export default class GenericController {
     }
 
     modalOpen(text, value) {
-        console.log(value);
-        console.log(text);
+        this.selectedElement = value;
         this.modalHeader = text;
         this.$mdDialog.show({
             controller: 'ModalController',
@@ -37,7 +36,9 @@ export default class GenericController {
             template: require('./modal.html'),
             locals: {
                 modalHeader: this.modalHeader,
-                columnsName: this.columnsName
+                columnsName: this.columnsName,
+                data: this.data,
+                selectedElement: this.selectedElement
             }
         });
 
