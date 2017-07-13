@@ -337,6 +337,17 @@ md-input-container.md-default-theme .md-input {
     padding: 15px;
 }
 
+.table-no-data{
+  text-align: center;
+  font-size: 102px;
+  font-style: italic;
+  color: rgba(0,0,0,0.4);
+}
+
+#loading-bar-container{
+  position: relative;
+}
+
 @media all and (max-width: 640px){
   .chart-statistic{
     /*min-height: 300px;*/

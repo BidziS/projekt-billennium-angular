@@ -6,7 +6,8 @@
     </div>
 
     <md-content layout="column" flex="flex" class="table-content">
-    <table class="md-table" md-colresize="md-colresize">
+    <h1 ng-if="!generic.isSomeData" class="table-no-data">No data</h1>
+    <table ng-if="generic.isSomeData" class="md-table" md-colresize="md-colresize">
       <thead>
         <tr class="md-table-headers-row">
           <th class="md-table-header" ng-repeat="h in generic.columnsName"><a href="#">{{h}} <i class="ion-android-arrow-dropup"></i><i class="ion-android-arrow-dropdown" ng-show="!reverse &amp;&amp; h.field == predicate"></i></a><span>{{h.name}}</span></th>

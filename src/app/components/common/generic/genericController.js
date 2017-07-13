@@ -7,7 +7,8 @@ export default class GenericController{
         this.ApiService = apiService;
         this.$mdDialog = $mdDialog;
         this.tableName = this.path;
-        this.DataStoreService = dataStoreService;      
+        this.DataStoreService = dataStoreService;
+        this.isSomeData = false;      
     }
 
     $onInit(){
@@ -17,15 +18,32 @@ export default class GenericController{
     setDataToTable(){
         this.ApiService.getRequest('api/' + this.path).then(response => {
             this.data = response.data.Data.Entries;
-            this.DataStoreService.setGroups(this.data);
+            if(this.data.length > 0){
+                this.isSomeData = true;
+            }
+            else{
+               this.isSomeData = false; 
+            }
+
+            if(this.path === 'Groups'){
+                this.DataStoreService.setGroups(this.data);
+            }
+
             this.columnsName = Object.keys(this.data[0]);
+            
             for(let i = 0; i < this.columnsName.length; i++){
                 let index = this.columnsName[i];
                 if(this.data[0][index] instanceof Array){                   
                     this.columnsName.splice(i, 1);
                     i--;
                 }
+                if(index === 'Id'){
+                    this.columnsName.splice(i, 1);
+                    i--;
+                }
+                
             }
+
         });
     }
     showConfirm(ev, id) {

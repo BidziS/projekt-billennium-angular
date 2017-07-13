@@ -12,7 +12,8 @@ export default class MenuController{
         this.$scope = $scope;
         let dataStorage = this.DataStoreService;
         this.$scope.$watch(function(){return dataStorage.getGroups();}, (value) => {
-            console.log('działa');
+            console.log(value);
+            this.menu = value;
         });
     }
 
@@ -26,6 +27,10 @@ export default class MenuController{
 
     goToSite(site){
         this.$state.go('home.' + site);
+    }
+
+    goToManageGroup(id, name){
+        this.$state.go('home.manage-group', {id: id, name: name})
     }
 
     getGruops(){

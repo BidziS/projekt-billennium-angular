@@ -1,5 +1,9 @@
+import sessionStorageService from '../../api/sessionStorageService';
+
 export default class LogoutController{
-    constructor(){
-        
+    constructor(sessionStorageService){
+        this.SessionStorageService = sessionStorageService;
+        this.SessionStorageService.setItemInStorage({}, 'token');
     }
+    
 }

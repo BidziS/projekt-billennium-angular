@@ -7,10 +7,6 @@ export default class ApiService {
         this.$q = $q;
         this.SessionStorageService = sessionStorageService;
         this.url = 'http://10.24.14.219:5786/';
-        this.user = {
-            username: '',
-            password: ''
-        }
         this.token = {
             token_type: '',
             access_token: ''

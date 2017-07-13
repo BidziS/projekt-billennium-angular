@@ -9,7 +9,7 @@
         </md-button>
     </li>
     <li ng-repeat="item in vm.menu">
-        <md-button class="submenu-list-button" ui-sref-active="active" ng-click="vm.goToSite('statistic')">
+        <md-button class="submenu-list-button" ui-sref-active="active" ng-click="vm.goToManageGroup(item.Id, item.Name)">
             {{item.Name}}
         </md-button>
     </li>
