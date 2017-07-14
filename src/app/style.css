@@ -348,6 +348,12 @@ md-input-container.md-default-theme .md-input {
   position: relative;
 }
 
+.loading-bar {
+  position: absolute;
+  z-index: 9999;
+  color: green !important;
+}
+
 @media all and (max-width: 640px){
   .chart-statistic{
     /*min-height: 300px;*/

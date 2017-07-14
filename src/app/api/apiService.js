@@ -1,11 +1,13 @@
 import { $http, $q } from 'angular';
 import sessionStorageService from './sessionStorageService';
-
+import { cfpLoadingBar } from 'angular-loading-bar';
+ 
 export default class ApiService {
-    constructor($http, $q, sessionStorageService){
+    constructor($http, $q, sessionStorageService, cfpLoadingBar){
         this.$http = $http;
         this.$q = $q;
         this.SessionStorageService = sessionStorageService;
+        this.cfpLoadingBar = cfpLoadingBar; 
         this.url = 'http://10.24.14.219:5786/';
         this.token = {
             token_type: '',
@@ -43,11 +45,13 @@ export default class ApiService {
         let loginString = `grant_type=password&username=${user.username}&password=${user.password}`;
         return this.$q((resolve, reject) => {
             this.$http.post('http://10.24.14.219:5786/Token', loginString, this.authorizationHeader).then(response => {
-
+                this.cfpLoadingBar.start();
                 this.SessionStorageService.setItemInStorage(response.data, 'token');
                 resolve(response.data);
             }).catch( e => {
                 console.log(e);
+            }).finally(() =>{
+                this.cfpLoadingBar.complete();
             })
         })
         

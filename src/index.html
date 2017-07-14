@@ -6,8 +6,10 @@
     <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
 </head>
 <body ng-app="AppModule">
-<div id="loading-bar-container">aaaaaaaaaaaaaaaa</div>    
-<ui-view></ui-view>
+<div>
+    <md-progress-linear class="loading-bar md-warn" data-ng-if="loading" md-mode="indeterminate"></md-progress-linear>
+</div>
+<div ui-view></div>
 
 </body>
 </html>

@@ -26,7 +26,7 @@ import GenericComponent from './components/common/generic/genericComponent';
 
 import MenuService from './components/common/sidenav/menuService';
 import AuthService from './components/login/authService';
-
+import loadingInterceptor from './api/loadingInterceptor';
 
 import ApiService from './api/apiService';
 import SessionStorageService from './api/sessionStorageService';
@@ -49,6 +49,7 @@ export default angular.module('AppModule', [ngMaterial, uiRouter, ngAnimate, ngC
                     .service('authService', AuthService)
                     .service('loginService', LoginService)
                     .service('apiService', ApiService)
+                    .factory('loadingInterceptor', loadingInterceptor)
                     .service('sessionStorageService', SessionStorageService)
                     .service('dataStoreService', DataStoreService);
 
@@ -81,7 +82,8 @@ function checkAuthentication($rootScope, $state, $window){
   });
 }
 
-function routingConfigs($stateProvider, $urlRouterProvider, $windowProvider, $qProvider, cfpLoadingBarProvider) {
+function routingConfigs($stateProvider, $urlRouterProvider, $windowProvider, $qProvider, cfpLoadingBarProvider, $httpProvider) {
+  $httpProvider.interceptors.push(loadingInterceptor);
   $urlRouterProvider
     .when('/home', '/home/statistic')
     .otherwise('/login');
