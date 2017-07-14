@@ -24,6 +24,7 @@ import ManageLecturesComponent from './components/home/manageLectures/manage-lec
 import ManageGroupsComponent from './components/home/manageGroups/manage-groupsComponent';
 import GenericComponent from './components/common/generic/genericComponent';
 import ModalController from './components/common/generic/modalController';
+import AddLecturerController from './components/home/manageLectures/add-lecturer/add-lecturerController';
 
 import MenuService from './components/common/sidenav/menuService';
 import AuthService from './components/login/authService';
@@ -53,7 +54,8 @@ export default angular.module('AppModule', [ngMaterial, uiRouter, ngAnimate, ngC
                     .factory('loadingInterceptor', loadingInterceptor)
                     .service('sessionStorageService', SessionStorageService)
                     .service('dataStoreService', DataStoreService)
-                    .controller('ModalController',ModalController);
+                    .controller('ModalController', ModalController)
+                    .controller('AddLecturerController', AddLecturerController);
 
 function checkAuthentication($rootScope, $state, $window){
   $rootScope.$on("$locationChangeSuccess", function(event, toState, toParams, fromState, fromParams){
@@ -64,8 +66,7 @@ function checkAuthentication($rootScope, $state, $window){
     let isEmpty = 0;
 
     isEmpty = Object.keys(token).length;
-
-    
+ 
     let state = '';
     for(let i = toState.length - 1; i > 0; i--){
         if(toState[i] === '/'){
@@ -121,7 +122,7 @@ function routingConfigs($stateProvider, $urlRouterProvider, $windowProvider, $qP
   const homeManageLectures = {
     name: 'home.manage-lectures',
     url: '/manage-lectures',
-    component: 'genericComponent',
+    component: 'myManageLectures',
     resolve: { path: function(){ return 'Lecturers' } },
     authenticate: true
   }

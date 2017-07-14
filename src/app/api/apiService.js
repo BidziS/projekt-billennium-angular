@@ -29,9 +29,9 @@ export default class ApiService {
         return this.$http.get(this.url + path, this.defaultHeader);
     }
 
-    postRequest(path, data, id){
+    postRequest(path, data){
         this.setDefaultHeader();
-        return this.$http.post(this.url + path + id, data, this.defaultHeader);
+        return this.$http.post(this.url + path, data, this.defaultHeader);
     }
 
     putRequest(path, data, id){
@@ -53,6 +53,7 @@ export default class ApiService {
                 resolve(response.data);
             }).catch(e => {
                 console.log(e);
+                reject(e);
             })
         })
         

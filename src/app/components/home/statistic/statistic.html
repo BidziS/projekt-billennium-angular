@@ -12,7 +12,7 @@
             </md-card-title-text>
 
         </md-card-title>
-        <md-card-container layout="row" layout-wrap layout-padding layout-align="center center" flex>
+        <md-content-card layout="row" layout-wrap layout-padding layout-align="center" style="max-height: 635px; overflow-y: auto" flex>
             <div class="chart-statistic" layout-align="center center">
                 <h3 flex>Ilość wykonanych etapów:</h3>
                 <div flex>
@@ -43,7 +43,7 @@
                 chart-data="vm.data" chart-labels="vm.labels" chart-options="options">
                 </canvas>
             </div>                 -->
-        </md-card-container>
+        </md-content-card>
         <md-card-actions layout="row" layout-align="end center">
             <md-button ng-click="vm.logInToSite()">Action 1</md-button>
             <md-button ng-click="vm.logOutToSite()">Action 2</md-button>

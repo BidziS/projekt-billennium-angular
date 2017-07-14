@@ -18,33 +18,26 @@ export default class LoginController {
 
     logInTosite(){
         this.loading = true;
-        // this.ApiService.logInToService(this.user)
-        //     .then(response => {
-        //         console.log(response);
-        //     });
-        this.$timeout(() => {
-            console.log(this.user);
-            this.ApiService.logInToService(this.user)
-                .then(response => {
-                    this.returnResult = response;
-                    this.role = this.returnResult.roles;
-                    this.token = this.returnResult.access_token;
-                    console.log(this.returnResult);
-                    console.log(this.role);
-                    this.$state.go('home');
-                    this.loading = false;
-                })
-                .catch(error => {
-                    if (error.status === 400) {
-                        console.log('złe dane');
-                        this.badRequest();
-                    } else {
-                        console.log('baza danych nie odpowiada');
-                        this.badDatabase();
-                    }
-                    this.loading = false;
-                });
-        },3000);
+        this.ApiService.logInToService(this.user).then(response => {
+            this.returnResult = response;
+            this.role = this.returnResult.roles;
+            this.token = this.returnResult.access_token;
+            console.log(this.returnResult);
+            console.log(this.role);
+            this.$state.go('home');
+            this.loading = false;
+            })
+            .catch(error => {
+            if (error.status === 400) {
+                console.log('złe dane');
+                this.badRequest();
+            } else {
+                console.log('baza danych nie odpowiada');
+                this.badDatabase();
+            }
+            this.loading = false;
+        });
+ 
     }
     getAllLecturers(){
         this.ApiService.getRequest('api/Groups').then(response => {console.log(response.data)});

@@ -1,17 +1,38 @@
-<div flex>
-    <md-card md-theme="darkgrey" md-theme-watch flex>
-        <md-card-title>
-            <md-card-title-text>
-                <span class="md-headline">Zarządzaj lekcjami</span>
-                <span class="md-subhead">Large</span>
-            </md-card-title-text>
-            <md-card-title-media>
-                <div class="md-media-lg card-media"></div>
-            </md-card-title-media>
-        </md-card-title>
-        <md-card-actions layout="row" layout-align="end center">
-            <md-button>Action 1</md-button>
-            <md-button>Action 2</md-button>
-        </md-card-actions>
-    </md-card>
-</div>
+<md-card md-theme="darkgrey" md-theme-watch flex>
+  <md-card-container class="table-md-cart-container" flex>
+    
+    <div ng-if="!lecturers.isLoading">
+      <span class="table-title" ng-cloak>{{ lecturers.name }}</span>
+      <md-button class="md-raised md-primary" ng-click="lecturers.modalOpen('Add')">Dodaj</md-button>
+    </div>
+
+    <md-content ng-if="!lecturers.isLoading" layout="column" flex="flex" class="table-content">
+        <h1 ng-if="!lecturers.isSomeData" class="table-no-data">No data</h1>
+        <table ng-if="lecturers.isSomeData" class="md-table" md-colresize="md-colresize">
+          <thead>
+            <tr class="md-table-headers-row">
+          <th class="md-table-header" ng-repeat="lecturer in lecturers.columnsName">
+            <a href="#">{{h}}
+              <i class="ion-android-arrow-dropup"></i>
+              <i class="ion-android-arrow-dropdown" ng-show="!reverse &amp;&amp; h.field == predicate"></i>
+            </a>
+            <span>{{h.name}}</span>
+          </th>
+              <th class="md-table-header"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="md-table-content-row" ng-repeat="c in lecturers.data">
+              <td class="md-table-content" ng-repeat="h in lecturers.columnsName" ng-class="customClass[h.field]">{{c[h]}}</td>
+              <td>
+                <md-button ng-click="lecturers.showConfirm($event, c.Id)" class="md-raised md-warn">Usuń</md-button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        </md-content>
+    <div class="loader" layout="row" ng-if="lecturers.isLoading" layout-sm="column" layout-align="center center" aria-label="wait">
+      <md-progress-circular md-diameter="80" md-mode="indeterminate"></md-progress-circular>
+    </div>
+  </md-card-container>
+</md-card>
