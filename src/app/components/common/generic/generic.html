@@ -2,15 +2,20 @@
   <md-card-container class="table-md-cart-container" flex>
     <div>
       <span class="table-title">{{generic.path}}</span>
-      <md-button class="md-raised md-primary">Dodaj</md-button>
     </div>
 
-    <md-content layout="column" flex="flex" class="table-content">
+<md-content ng-if="!generic.isLoading" layout="column" flex="flex" class="table-content">
     <h1 ng-if="!generic.isSomeData" class="table-no-data">No data</h1>
     <table ng-if="generic.isSomeData" class="md-table" md-colresize="md-colresize">
       <thead>
         <tr class="md-table-headers-row">
-          <th class="md-table-header" ng-repeat="h in generic.columnsName"><a href="#">{{h}} <i class="ion-android-arrow-dropup"></i><i class="ion-android-arrow-dropdown" ng-show="!reverse &amp;&amp; h.field == predicate"></i></a><span>{{h.name}}</span></th>
+      <th class="md-table-header" ng-repeat="h in generic.columnsName">
+        <a href="#">{{h}}
+          <i class="ion-android-arrow-dropup"></i>
+          <i class="ion-android-arrow-dropdown" ng-show="!reverse &amp;&amp; h.field == predicate"></i>
+        </a>
+        <span>{{h.name}}</span>
+      </th>
           <th class="md-table-header"></th>
         </tr>
       </thead>
@@ -20,12 +25,14 @@
             <td>
               <md-button class="md-raised md-primary">Edytuj</md-button>
               <md-button ng-click="generic.showConfirm($event, c.Id)" class="md-raised md-warn">Usuń</md-button>
-            </td>
+        <td>
+          <md-button class="md-raised md-primary" ng-click="generic.modalOpen('Edit', c)">Edytuj</md-button>
+          <md-button class="md-raised md-warn">Usuń</md-button>
+        </td>
         </tr>
-
       </tbody>
     </table>
     </md-content>
-  </md-card-container>
-</md-card>
-
+<div class="loader" layout="row" ng-if="generic.isLoading" layout-sm="column" layout-align="center center" aria-label="wait">
+  <md-progress-circular md-diameter="80" md-mode="indeterminate"></md-progress-circular>
+</div>

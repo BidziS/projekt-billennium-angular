@@ -2,13 +2,14 @@ import apiService from '../../../api/apiService';
 import dataStoreService from '../../../api/dataStoreService';
 import {$mdDialog} from 'angular-material';
 
-export default class GenericController{
+export default class GenericController {
     constructor(apiService, $mdDialog, dataStoreService){
         this.ApiService = apiService;
         this.$mdDialog = $mdDialog;
         this.tableName = this.path;
         this.DataStoreService = dataStoreService;
         this.isSomeData = false;      
+        // this.setDataToTable();
     }
 
     $onInit(){
@@ -65,9 +66,30 @@ export default class GenericController{
         });
     };
 
+            this.isLoading = false;
+        });
+        },3000);
+    }
+
+    modalOpen(text, value) {
+        this.selectedElement = value;
+        this.modalHeader = text;
+        this.$mdDialog.show({
+            controller: 'ModalController',
+            controllerAs: 'modal',
+            clickOutsideToClose: true,
+            template: require('./modal.html'),
+            locals: {
+                modalHeader: this.modalHeader,
+                columnsName: this.columnsName,
+                data: this.data,
+                selectedElement: this.selectedElement
+            }
     deleteItem(id){
         this.ApiService.deleteRequest('api/'+ this.path + '/' + id).then(response => {
             this.setDataToTable();
         });
+
     }
+
 }

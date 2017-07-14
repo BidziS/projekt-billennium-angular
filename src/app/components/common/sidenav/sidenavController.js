@@ -8,7 +8,7 @@ export default class SidenavController{
         //     .then(result => this.menu = result.data);
         this.menu = [];
         this.$state = $state;
-        
+        this.tableHeader = '';
     }
 
     check(){
@@ -17,10 +17,8 @@ export default class SidenavController{
 
     goToSite(site){
         this.$state.go('home.' + site);
+        this.tableHeader = 'Lecturers';
     }
-
-
-
 }
 
 //SidenavController.$inject = ['$state'];

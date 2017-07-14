@@ -8,7 +8,7 @@ export default class MenuController{
         this.ApiService = apiService;
         this.DataStoreService = dataStoreService;
         this.isOpen = false;
-        this.menu = []; 
+        this.menu = [];
         this.$scope = $scope;
         let dataStorage = this.DataStoreService;
         this.$scope.$watch(function(){return dataStorage.getGroups();}, (value) => {

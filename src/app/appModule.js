@@ -3,7 +3,7 @@ import ngMaterial from 'angular-material';
 import ngAnimate from 'angular-animate';
 import uiRouter from '@uirouter/angularjs';
 import ngChart from 'angular-chart.js';
-import angularLoadingBar from 'angular-loading-bar'; 
+
 
 import '../../node_modules/angular-material/angular-material.css';
 import '../../node_modules/font-awesome/css/font-awesome.min.css';
@@ -23,6 +23,7 @@ import StatisticComponent from './components/home/statistic/statisticComponent';
 import ManageLecturesComponent from './components/home/manageLectures/manage-lecturesComponent';
 import ManageGroupsComponent from './components/home/manageGroups/manage-groupsComponent';
 import GenericComponent from './components/common/generic/genericComponent';
+import ModalController from './components/common/generic/modalController';
 
 import MenuService from './components/common/sidenav/menuService';
 import AuthService from './components/login/authService';
