@@ -52,10 +52,9 @@ export default class ApiService {
         let loginString = `grant_type=password&username=${user.username}&password=${user.password}`;
         return this.$q((resolve, reject) => {
             this.$http.post('http://10.24.14.219:5786/Token', loginString, this.authorizationHeader).then(response => {
-
                 this.SessionStorageService.setItemInStorage(response.data, 'token');
                 resolve(response.data);
-            }).catch( e => {
+            }).catch(e => {
                 console.log(e);
                 reject(e);
             })

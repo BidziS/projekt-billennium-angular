@@ -7,6 +7,7 @@ export default class GenericController {
         this.$timeout = $timeout;
         this.modalHeader = '';
         this.isLoading = true;
+        // this.setDataToTable();
     }
 
     $onInit(){
@@ -50,4 +51,3 @@ export default class GenericController {
     }
 
 }
-
