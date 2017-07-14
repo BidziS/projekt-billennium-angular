@@ -35,7 +35,7 @@ export default class ApiService {
 
     postRequest(path, data, id){
         this.setDefaultHeader();
-        return this.$http.put(this.url + path + id, data, this.defaultHeader);
+        return this.$http.post(this.url + path + id, data, this.defaultHeader);
     }
 
     putRequest(path, data, id){

@@ -1,9 +1,10 @@
 import apiService from '../../../api/apiService';
 
 export default class GenericController {
-    constructor(apiService, $mdDialog){
+    constructor(apiService, $mdDialog, $timeout){
         this.ApiService = apiService;
         this.$mdDialog = $mdDialog;
+        this.$timeout = $timeout;
         this.modalHeader = '';
         this.isLoading = true;
     }
@@ -13,6 +14,7 @@ export default class GenericController {
     }
 
     setDataToTable(){
+        this.$timeout(() => {
         this.ApiService.getRequest(this.path).then(response => {
             this.data = response.data.Data.Entries;
             console.log(this.data);
@@ -26,6 +28,7 @@ export default class GenericController {
             }
             this.isLoading = false;
         });
+        },3000);
     }
 
     modalOpen(text, value) {
