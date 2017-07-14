@@ -1,6 +1,7 @@
 import apiService from '../../../api/apiService';
 import dataStoreService from '../../../api/dataStoreService';
-import {$mdDialog} from 'angular-material';
+import { $mdDialog } from 'angular-material';
+import ModalController from './modalController';
 
 export default class GenericController {
     constructor(apiService, $mdDialog, dataStoreService){
@@ -66,11 +67,6 @@ export default class GenericController {
         });
     };
 
-            this.isLoading = false;
-        });
-        },3000);
-    }
-
     modalOpen(text, value) {
         this.selectedElement = value;
         this.modalHeader = text;
@@ -85,11 +81,15 @@ export default class GenericController {
                 data: this.data,
                 selectedElement: this.selectedElement
             }
+    
+
+
+        })
+    }
     deleteItem(id){
         this.ApiService.deleteRequest('api/'+ this.path + '/' + id).then(response => {
             this.setDataToTable();
-        });
-
+        })
     }
 
 }

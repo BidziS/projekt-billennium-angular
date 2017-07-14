@@ -36,7 +36,7 @@ import DataStoreService from './api/dataStoreService';
 import {$windowProvider} from 'angular';
 
 
-export default angular.module('AppModule', [ngMaterial, uiRouter, ngAnimate, ngChart, angularLoadingBar, CommonModule.name])
+export default angular.module('AppModule', [ngMaterial, uiRouter, ngAnimate, ngChart, CommonModule.name])
                     .config(routingConfigs)
                     .run(checkAuthentication)
                     .component('homeComponent', HomeComponent)
@@ -52,7 +52,8 @@ export default angular.module('AppModule', [ngMaterial, uiRouter, ngAnimate, ngC
                     .service('apiService', ApiService)
                     .factory('loadingInterceptor', loadingInterceptor)
                     .service('sessionStorageService', SessionStorageService)
-                    .service('dataStoreService', DataStoreService);
+                    .service('dataStoreService', DataStoreService)
+                    .controller('ModalController',ModalController);
 
 function checkAuthentication($rootScope, $state, $window){
   $rootScope.$on("$locationChangeSuccess", function(event, toState, toParams, fromState, fromParams){
@@ -83,7 +84,7 @@ function checkAuthentication($rootScope, $state, $window){
   });
 }
 
-function routingConfigs($stateProvider, $urlRouterProvider, $windowProvider, $qProvider, cfpLoadingBarProvider, $httpProvider) {
+function routingConfigs($stateProvider, $urlRouterProvider, $windowProvider, $qProvider, $httpProvider) {
   $httpProvider.interceptors.push(loadingInterceptor);
   $urlRouterProvider
     .when('/home', '/home/statistic')

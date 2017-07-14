@@ -21,14 +21,11 @@
       </thead>
       <tbody>
         <tr class="md-table-content-row" ng-repeat="c in generic.data">
-            <td class="md-table-content" ng-repeat="h in generic.columnsName" ng-class="customClass[h.field]">{{c[h]}}</td>
-            <td>
-              <md-button class="md-raised md-primary">Edytuj</md-button>
-              <md-button ng-click="generic.showConfirm($event, c.Id)" class="md-raised md-warn">Usuń</md-button>
-        <td>
-          <md-button class="md-raised md-primary" ng-click="generic.modalOpen('Edit', c)">Edytuj</md-button>
-          <md-button class="md-raised md-warn">Usuń</md-button>
-        </td>
+          <td class="md-table-content" ng-repeat="h in generic.columnsName" ng-class="customClass[h.field]">{{c[h]}}</td>
+          <td>
+            <md-button class="md-raised md-primary" ng-click="generic.modalOpen('Edit', c)">Edytuj</md-button>
+            <md-button ng-click="generic.showConfirm($event, c.Id)" class="md-raised md-warn">Usuń</md-button>
+          </td>
         </tr>
       </tbody>
     </table>

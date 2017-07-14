@@ -36,25 +36,16 @@ export default class ModalController{
             this.apiService.postRequest('api/Lecturers/',this.selectedElement)
                 .then(response => {
                     this.dataAdded = response.data.Data;
-                    console.log(this.dataAdded);
-                    this.data.push(this.dataAdded);
-                    console.log(this.data);
             });
         } else {
             this.apiService.putRequest('api/Lecturers/',this.selectedElement, this.selectedElement.Id)
                 .then(response => {
                     this.dataAdded = response.data.Data;
-                    console.log(this.dataAdded);
-                    this.data.push(this.dataAdded);
-                    console.log(this.data);
-                    // this.data.shift();
+
             });
         }
         this.$mdDialog.cancel();
     }
-    // confirm() {
-    //     this.newPerson = true;
-    // }
     cancel() {
         this.$mdDialog.cancel();
     }
