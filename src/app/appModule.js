@@ -22,9 +22,11 @@ import HomeComponent from './components/home/homeComponent';
 import StatisticComponent from './components/home/statistic/statisticComponent';
 import ManageLecturesComponent from './components/home/manageLectures/manage-lecturesComponent';
 import ManageGroupsComponent from './components/home/manageGroups/manage-groupsComponent';
+import ManageGroupComponent from './components/home/manageGroups/manage-selected-group/manage-selected-groupComponent';
 import GenericComponent from './components/common/generic/genericComponent';
 import ModalController from './components/common/generic/modalController';
 import AddLecturerController from './components/home/manageLectures/add-lecturer/add-lecturerController';
+import AddStudentToGroupController from './components/home/manageGroups/manage-selected-group/add-student-to-group/add-student-to-groupController';
 
 import MenuService from './components/common/sidenav/menuService';
 import AuthService from './components/login/authService';
@@ -45,6 +47,7 @@ export default angular.module('AppModule', [ngMaterial, uiRouter, ngAnimate, ngC
                     .component('myStatistic', StatisticComponent)
                     .component('myManageLectures', ManageLecturesComponent)
                     .component('myManageGroups', ManageGroupsComponent)
+                    .component('myManageGroup', ManageGroupComponent)
                     .component('logoutComponent', LogoutComponent)
                     .component('genericComponent', GenericComponent)
                     .service('menuService', MenuService)
@@ -55,7 +58,8 @@ export default angular.module('AppModule', [ngMaterial, uiRouter, ngAnimate, ngC
                     .service('sessionStorageService', SessionStorageService)
                     .service('dataStoreService', DataStoreService)
                     .controller('ModalController', ModalController)
-                    .controller('AddLecturerController', AddLecturerController);
+                    .controller('AddLecturerController', AddLecturerController)
+                    .controller('AddStudentToGroupController', AddStudentToGroupController);
 
 function checkAuthentication($rootScope, $state, $window){
   $rootScope.$on("$locationChangeSuccess", function(event, toState, toParams, fromState, fromParams){
@@ -114,9 +118,7 @@ function routingConfigs($stateProvider, $urlRouterProvider, $windowProvider, $qP
   const homeManageGroups = {
     name: 'home.manage-groups',
     url: '/manage-groups',
-    component: 'genericComponent',
-    resolve: { path: function(){ return 'Groups' } },
-    authenticate: true
+    component: 'myManageGroups'
   }
 
   const homeManageLectures = {
@@ -136,7 +138,7 @@ function routingConfigs($stateProvider, $urlRouterProvider, $windowProvider, $qP
   const manageGroup = {
     name: 'home.manage-group',
     url: '/manage-group/{id}',
-    component: 'myManageGroups',
+    component: 'myManageGroup',
     params: {
       id: ''
     }
@@ -148,24 +150,6 @@ function routingConfigs($stateProvider, $urlRouterProvider, $windowProvider, $qP
     component: 'logoutComponent'
   }
   
-  // function authenticate($state, $q, $timeout){
-  //   let $window = $windowProvider.$get();
-  //   let token = JSON.parse($window.sessionStorage.getItem('token'));
-  //   let isEmpty = Object.keys(token).length
-
-  //   if(Object.keys(token).length !== 0){
-  //     return $q.when();
-  //   }
-  //   else{
-  //     $timeout(function(){
-  //       $state.go('login');
-  //     });
-
-  //     return $q.reject();
-  //   }
-
-  // }
-
   $stateProvider
     .state(login)
     .state(home)

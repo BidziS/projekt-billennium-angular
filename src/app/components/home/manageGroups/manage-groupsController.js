@@ -1,21 +1,22 @@
 import {$stateParams} from '@uirouter/angularjs';
 import apiService from '../../../api/apiService';
+import { $mdDialog, $mdToast } from 'angular-material';
 
 export default class ManageGroupsController{
-    constructor($stateParams, apiService){
+    constructor($stateParams, apiService, $mdDialog, $mdToast){
         this.$stateParams = $stateParams;
         this.ApiService = apiService;
+        this.$mdDialog = $mdDialog;
+        this.$mdToast = $mdToast;
         this.data = [];
-        console.log(this.$stateParams.id);
-        console.log(this.id);
         this.name = "";
         this.isSomeData = false;  
         this.getGroup();
     }
 
     getGroup(){
-        this.ApiService.getRequest('api/Groups/' + this.$stateParams.id).then(response => {
-            this.data = response.data.Data.Students;
+        this.ApiService.getRequest('api/Groups').then(response => {
+            this.data = response.data.Data.Entries;
             this.name = response.data.Data.Name;
             if(this.data.length > 0){
                 this.isSomeData = true;
@@ -42,5 +43,35 @@ export default class ManageGroupsController{
             }
         });
     }
+    showConfirm(ev, id) {
+    // Appending dialog to document.body to cover sidenav in docs app
+        let confirm = this;
+        let conf = confirm.$mdDialog.confirm()
+            .title(`Do you want to delete this item?`)
+            .textContent('')
+            .ariaLabel('')
+            .targetEvent(ev)
+            .ok('Confirm')
+            .cancel('Abort');
 
+        let deleteItm = function(){
+            this.deleteItem(id);
+        };
+        confirm.$mdDialog.show(conf).then(function(deleteItm){
+            confirm.deleteItem(id);
+        });
+    };
+
+    deleteItem(id){
+        this.ApiService.deleteRequest('api/Groups/' + id).then(response => {
+            this.getGroup();
+            this.$mdToast.show(
+                this.$mdToast.simple()
+                    .textContent("You deleted a lecturer")
+                    .position('top center')
+                    .hideDelay(4000)
+            )
+        })
+    }
+    
 }
