@@ -6,10 +6,14 @@
     <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
 </head>
 <body ng-app="AppModule">
-<div data-ng-if="loading">
-    <md-progress-linear class="loading-bar md-warn"  md-mode="indeterminate"></md-progress-linear>
-</div>
+
 <div class="page-container" ui-view></div>
+<div data-ng-if="loading" class="shader" layout="column" layout-sm="column" layout-align="center center">
+    <!-- <md-progress-linear class="loading-bar md-warn"  md-mode="indeterminate"></md-progress-linear> -->
+    <div >
+      <md-progress-circular md-mode="indeterminate" md-diameter="120"></md-progress-circular>
+    </div>
+</div>
 
 </body>
 </html>

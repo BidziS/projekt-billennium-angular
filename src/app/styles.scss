@@ -350,8 +350,18 @@ md-toast {
     height: 100%;
 }
 
-
-
+.shader {
+    width: 100%;
+    height: 100%;
+    background-color: black; /** change it to this background-color: rgba(0, 0, 0, 0.65) **/
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    position: fixed;
+    opacity: 0.5; /** you can remove this **/
+    // display: none;
+}
 
 
 

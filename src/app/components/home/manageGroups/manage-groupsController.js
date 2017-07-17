@@ -46,9 +46,6 @@ export default class ManageGroupsController{
 
     modalOpen(value) {
         let context = this;
-        if(value.Id !== ""){
-            
-        }
         this.$mdDialog.show({
             controller: 'AddGroupController',
             controllerAs: 'addgroup',
