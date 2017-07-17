@@ -1,6 +1,5 @@
 import authService from './authService';
 import apiService from '../../api/apiService';
-import loginService from './loginservice';
 
 export default class LoginController {
     constructor(apiService, $state, $mdToast, $timeout) {

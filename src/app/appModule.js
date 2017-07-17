@@ -15,9 +15,9 @@ import './styles.scss';
 import CommonModule from './components/common/commonModule';
 
 import LoginComponent from './components/login/loginComponent';
-import LoginService from './components/login/loginservice';
 
 import LogoutComponent from './components/logout/logoutComponent';
+
 import HomeComponent from './components/home/homeComponent';
 
 import StatisticComponent from './components/home/statistic/statisticComponent';
@@ -38,7 +38,6 @@ import ApiService from './api/apiService';
 import SessionStorageService from './api/sessionStorageService';
 import DataStoreService from './api/dataStoreService';
 
-import {$windowProvider} from 'angular';
 
 
 export default angular.module('AppModule', [ngMaterial, uiRouter, ngAnimate, ngChart, CommonModule.name])
@@ -54,7 +53,6 @@ export default angular.module('AppModule', [ngMaterial, uiRouter, ngAnimate, ngC
                     .component('genericComponent', GenericComponent)
                     .service('menuService', MenuService)
                     .service('authService', AuthService)
-                    .service('loginService', LoginService)
                     .service('apiService', ApiService)
                     .factory('loadingInterceptor', loadingInterceptor)
                     .service('sessionStorageService', SessionStorageService)
