@@ -10,6 +10,7 @@ import '../../node_modules/font-awesome/css/font-awesome.min.css';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 import './style.css';
+import './styles.scss';
 
 import CommonModule from './components/common/commonModule';
 
@@ -27,6 +28,7 @@ import GenericComponent from './components/common/generic/genericComponent';
 import ModalController from './components/common/generic/modalController';
 import AddLecturerController from './components/home/manageLectures/add-lecturer/add-lecturerController';
 import AddStudentToGroupController from './components/home/manageGroups/manage-selected-group/add-student-to-group/add-student-to-groupController';
+import AddGroupController from './components/home/manageGroups/add-group/add-groupController';
 
 import MenuService from './components/common/sidenav/menuService';
 import AuthService from './components/login/authService';
@@ -59,6 +61,7 @@ export default angular.module('AppModule', [ngMaterial, uiRouter, ngAnimate, ngC
                     .service('dataStoreService', DataStoreService)
                     .controller('ModalController', ModalController)
                     .controller('AddLecturerController', AddLecturerController)
+                    .controller('AddGroupController', AddGroupController)
                     .controller('AddStudentToGroupController', AddStudentToGroupController);
 
 function checkAuthentication($rootScope, $state, $window){

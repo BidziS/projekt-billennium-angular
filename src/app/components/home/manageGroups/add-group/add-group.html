@@ -1,0 +1,22 @@
+<md-dialog class="modal-container">
+    <form ng-submit="addgroup.addGroupToDatabase()" name="personalityCheck">
+        <md-toolbar>
+            <h2>Add Group</h2>
+        </md-toolbar>
+        <md-dialog-content style="padding: 50px;" flex layout="column">
+            <md-input-container>
+                <label>Name</label>
+                <input type="text" ng-model="addgroup.addGroup.Name" required>
+            </md-input-container>
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <md-button type="submit" >
+                Confirm
+            </md-button>
+            <span flex></span>
+            <md-button ng-click="addgroup.cancel()">
+                Cancel
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

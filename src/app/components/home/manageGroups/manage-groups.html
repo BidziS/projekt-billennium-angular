@@ -2,7 +2,7 @@
   <md-card-container class="table-md-cart-container" flex>
     <div>
       <span class="table-title">Manage Groups</span>
-      <md-button class="md-raised md-primary">Add student</md-button>
+      <md-button ng-click="groups.modalOpen()" class="md-raised md-primary">Add group</md-button>
     </div>
     <md-content layout="column" flex="flex" class="table-content">
         <h1 ng-if="!groups.isSomeData" class="table-no-data">No data</h1>
@@ -17,7 +17,7 @@
             <tr class="md-table-content-row" ng-repeat="c in groups.data">
                 <td class="md-table-content" ng-repeat="h in groups.columnsName" ng-class="customClass[h.field]">{{c[h]}}</td>
                 <td>
-                <md-button class="md-raised md-primary" ng-click="groups.modalOpen('Edit', c)">Edytuj</md-button>
+                <md-button class="md-raised md-primary" ng-click="groups.modalOpen(c)" ng-disabled="true">Edit</md-button>
                 <md-button ng-click="groups.showConfirm($event, c.Id)" class="md-raised md-warn">Delete</md-button>
                 </td>
             </tr>

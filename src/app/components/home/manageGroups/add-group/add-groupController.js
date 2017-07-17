@@ -1,4 +1,4 @@
-import apiService from '../../../../../api/apiService';
+import apiService from '../../../../api/apiService';
 import { $state } from '@uirouter/angularjs';
 
 export default class AddStudentToGroupController{
@@ -7,21 +7,34 @@ export default class AddStudentToGroupController{
         this.$mdToast = $mdToast;
         this.apiService = apiService;
         this.$state = $state;
-        this.addPerson = {
-            Id:"",
-            Name: "",
-            Email: ""
+        this.addGroup = {
+            Name: ""
         }
+        this.lecturers = [];
+        this.selectedLecturer = {};
         this.groupId = groupId;
-        this.columnsName = Object.keys(this.addPerson);
     }
-    addStudentToGroup() {
-        this.apiService.postRequest('api/Groups/'+this.groupId+'/Students', this.addPerson).then(response => {
+
+    getLecturers(){
+        this.apiService.getRequest('api/Lecturers').then(response => {
+            this.data = response.data.Data.Entries;
+            if(this.data.length > 0){
+                this.isSomeData = true;
+            }
+            else{
+               this.isSomeData = false; 
+            }           
+        });
+    }
+
+
+    addGroupToDatabase() {
+        this.apiService.postRequest('api/Groups', this.addGroup).then(response => {
             this.dataAdded = response.data.Data;
             this.$state.reload();
             this.$mdToast.show(
                 this.$mdToast.simple()
-                    .textContent("You added a student to the group.")
+                    .textContent("You added a group.")
                     .position('top center')
                     .hideDelay(4000)
             );

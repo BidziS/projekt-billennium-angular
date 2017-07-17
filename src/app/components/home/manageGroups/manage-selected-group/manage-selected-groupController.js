@@ -3,10 +3,11 @@ import apiService from '../../../../api/apiService';
 import { $mdDialog, $mdToast } from 'angular-material';
 
 export default class ManageGroupController{
-    constructor($stateParams, apiService, $mdDialog){
+    constructor($stateParams, apiService, $mdDialog, $mdToast){
         this.$stateParams = $stateParams;
         this.ApiService = apiService;
         this.$mdDialog = $mdDialog;
+        this.$mdToast = $mdToast;
         this.data = [];
         this.name = "";
         this.isSomeData = false;  
@@ -59,6 +60,37 @@ export default class ManageGroupController{
     
 
 
+        })
+    }
+
+    showConfirm(ev, id) {
+    // Appending dialog to document.body to cover sidenav in docs app
+        let confirm = this;
+        let conf = confirm.$mdDialog.confirm()
+            .title(`Do you want to delete this item?`)
+            .textContent('')
+            .ariaLabel('')
+            .targetEvent(ev)
+            .ok('Confirm')
+            .cancel('Abort');
+
+        let deleteItm = function(){
+            this.deleteItem(id);
+        };
+        confirm.$mdDialog.show(conf).then(function(deleteItm){
+            confirm.deleteItem(id);
+        });
+    };
+
+    deleteItem(id){
+        this.ApiService.deleteRequest('api/Groups/'+ this.$stateParams.id + '/Students/' +id).then(response => {
+            this.getGroup();
+            this.$mdToast.show(
+                this.$mdToast.simple()
+                    .textContent("You deleted a student")
+                    .position('top center')
+                    .hideDelay(4000)
+            )
         })
     }
 

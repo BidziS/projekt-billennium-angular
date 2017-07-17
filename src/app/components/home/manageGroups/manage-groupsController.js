@@ -43,6 +43,27 @@ export default class ManageGroupsController{
             }
         });
     }
+
+    modalOpen(value) {
+        let context = this;
+        if(value.Id !== ""){
+            
+        }
+        this.$mdDialog.show({
+            controller: 'AddGroupController',
+            controllerAs: 'addgroup',
+            clickOutsideToClose: true,
+            template: require('./add-group/add-group.html'),
+            locals: {
+                data: context.data,
+                groupId: context.$stateParams.id
+            }
+    
+
+
+        })
+    }
+
     showConfirm(ev, id) {
     // Appending dialog to document.body to cover sidenav in docs app
         let confirm = this;
@@ -67,7 +88,7 @@ export default class ManageGroupsController{
             this.getGroup();
             this.$mdToast.show(
                 this.$mdToast.simple()
-                    .textContent("You deleted a lecturer")
+                    .textContent("You deleted the group ")
                     .position('top center')
                     .hideDelay(4000)
             )

@@ -40,7 +40,6 @@ export default class ManageLecturesController{
     }
 
     showConfirm(ev, id) {
-    // Appending dialog to document.body to cover sidenav in docs app
         let confirm = this;
         let conf = confirm.$mdDialog.confirm()
             .title(`Do you want to delete this item?`)

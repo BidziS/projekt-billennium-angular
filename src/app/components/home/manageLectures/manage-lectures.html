@@ -3,7 +3,7 @@
     
     <div ng-if="!lecturers.isLoading">
       <span class="table-title" ng-cloak>{{ lecturers.name }}</span>
-      <md-button class="md-raised md-primary" ng-click="lecturers.modalOpen('Add')">Dodaj</md-button>
+      <md-button class="md-raised md-primary" ng-click="lecturers.modalOpen('Add')">Add</md-button>
     </div>
 
     <md-content ng-if="!lecturers.isLoading" layout="column" flex="flex" class="table-content">
@@ -25,7 +25,7 @@
             <tr class="md-table-content-row" ng-repeat="c in lecturers.data">
               <td class="md-table-content" ng-repeat="h in lecturers.columnsName" ng-class="customClass[h.field]">{{c[h]}}</td>
               <td>
-                <md-button ng-click="lecturers.showConfirm($event, c.Id)" class="md-raised md-warn">Usuń</md-button>
+                <md-button ng-click="lecturers.showConfirm($event, c.Id)" class="md-raised md-warn">Delete</md-button>
               </td>
             </tr>
           </tbody>
