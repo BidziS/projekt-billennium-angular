@@ -44,10 +44,8 @@ export default class ManageGroupController{
         });
     }
 
-    modalOpen(text, value) {
+    openAddStudentForm(value) {
         let context = this;
-        this.selectedElement = value;
-        this.modalHeader = text;
         this.$mdDialog.show({
             controller: 'AddStudentToGroupController',
             controllerAs: 'modal',

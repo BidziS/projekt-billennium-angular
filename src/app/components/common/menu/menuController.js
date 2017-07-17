@@ -37,6 +37,7 @@ export default class MenuController{
         this.ApiService.getRequest('api/Groups').then(response => {
             console.log(response.data);
             this.menu = response.data.Data.Entries;
+            
         });
     }
 }

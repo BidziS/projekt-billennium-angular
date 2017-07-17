@@ -2,7 +2,7 @@
   <md-card-container class="table-md-cart-container" flex>
     
     <div ng-if="!lecturers.isLoading">
-      <span class="table-title" ng-cloak>{{ lecturers.name }}</span>
+      <span class="table-title" ng-cloak ng-bind="lecturers.name"></span>
       <md-button class="md-raised md-primary" ng-click="lecturers.modalOpen('Add')">Add</md-button>
     </div>
 
@@ -11,21 +11,21 @@
         <table ng-if="lecturers.isSomeData" class="md-table" md-colresize="md-colresize">
           <thead>
             <tr class="md-table-headers-row">
-          <th class="md-table-header" ng-repeat="lecturer in lecturers.columnsName">
-            <a href="#">{{h}}
+          <th class="md-table-header" ng-repeat="column in lecturers.columnsName">
+            <a href="#">
               <i class="ion-android-arrow-dropup"></i>
-              <i class="ion-android-arrow-dropdown" ng-show="!reverse &amp;&amp; h.field == predicate"></i>
+              <i class="ion-android-arrow-dropdown" ng-show="!reverse &amp;&amp; column.field == predicate"></i>
             </a>
-            <span>{{h.name}}</span>
+            <span ng-bind="column"></span>
           </th>
               <th class="md-table-header"></th>
             </tr>
           </thead>
           <tbody>
-            <tr class="md-table-content-row" ng-repeat="c in lecturers.data">
-              <td class="md-table-content" ng-repeat="h in lecturers.columnsName" ng-class="customClass[h.field]">{{c[h]}}</td>
+            <tr class="md-table-content-row" ng-repeat="data in lecturers.data">
+              <td class="md-table-content" ng-repeat="column in lecturers.columnsName" ng-class="customClass[column.field]" ng-bind="data[column]"></td>
               <td>
-                <md-button ng-click="lecturers.showConfirm($event, c.Id)" class="md-raised md-warn">Delete</md-button>
+                <md-button ng-click="lecturers.showConfirm($event, data.Id)" class="md-raised md-warn">Delete</md-button>
               </td>
             </tr>
           </tbody>

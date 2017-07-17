@@ -1,13 +1,15 @@
 import {$stateParams} from '@uirouter/angularjs';
 import apiService from '../../../api/apiService';
 import { $mdDialog, $mdToast } from 'angular-material';
+import dataStoreService from '../../../api/dataStoreService';
 
 export default class ManageGroupsController{
-    constructor($stateParams, apiService, $mdDialog, $mdToast){
+    constructor($stateParams, apiService, $mdDialog, $mdToast, dataStoreService){
         this.$stateParams = $stateParams;
         this.ApiService = apiService;
         this.$mdDialog = $mdDialog;
         this.$mdToast = $mdToast;
+        this.DataStoreService = dataStoreService;
         this.data = [];
         this.name = "";
         this.isSomeData = false;  
@@ -18,6 +20,7 @@ export default class ManageGroupsController{
         this.ApiService.getRequest('api/Groups').then(response => {
             this.data = response.data.Data.Entries;
             this.name = response.data.Data.Name;
+            this.DataStoreService.setGroups(this.data);
             if(this.data.length > 0){
                 this.isSomeData = true;
             }
@@ -44,7 +47,7 @@ export default class ManageGroupsController{
         });
     }
 
-    modalOpen(value) {
+    openAddGroupForm(value) {
         let context = this;
         this.$mdDialog.show({
             controller: 'AddGroupController',

@@ -8,7 +8,8 @@ export default class ModalController{
         this.apiService = apiService;
         this.$state = $state;
         this.addPerson = {
-            Name: "",
+            FirstName: "",
+            LastName: "",
             Email: "",
             Password: "",
             ConfirmPassword: ""

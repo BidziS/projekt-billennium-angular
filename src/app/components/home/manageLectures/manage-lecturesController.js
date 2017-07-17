@@ -18,6 +18,7 @@ export default class ManageLecturesController{
     setDataToTable(){
         this.ApiService.getRequest('api/Lecturers').then(response => {
             this.data = response.data.Data.Entries;
+            
             if(this.data.length > 0){
                 this.isSomeData = true;
             }
