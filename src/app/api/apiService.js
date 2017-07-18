@@ -60,6 +60,11 @@ export default class ApiService {
         
     }
 
+    postAccount(path, data) {
+        console.log(this.url + path);
+        return this.$http.post(this.url + path, data);
+    }
+
 
     setDefaultHeader(){
         this.token = this.SessionStorageService.getItemFromStorage('token');

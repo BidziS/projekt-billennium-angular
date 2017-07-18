@@ -43,18 +43,18 @@ import { $q, $rootScope, $log } from 'angular';
 // }
 function LoadingInterceptor ($q, $rootScope, $log) {
     'use strict';
- 
+
     var xhrCreations = 0;
     var xhrResolutions = 0;
- 
+
     function isLoading() {
         return xhrResolutions < xhrCreations;
     }
- 
+
     function updateStatus() {
         $rootScope.loading = isLoading();
     }
- 
+
     return {
         request: function (config) {
             xhrCreations++;

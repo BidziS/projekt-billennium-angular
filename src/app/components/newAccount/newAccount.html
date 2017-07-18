@@ -1,0 +1,27 @@
+<div class="login-container" layout="column" layout-align="center center" flex>
+    <div layout="column" layout-align="center center" flex>
+        <h1 class="md-display-4 style-text">Shut up and learn</h1>
+        <form name="personalityCreate" layout="column" layout-align="space-around center" flex="50">
+            <h1>Create account</h1>
+            <md-input-container>
+                <label>Password</label>
+                <input type="password" name="password" minlength="6" maxlength="12" ng-model="account.newAccount.Password" required>
+                <div ng-messages="personalityCreate.username.$error">
+                    <div ng-message="required">Password has from 6 to 12 symbols!</div>
+                </div>
+            </md-input-container>
+            <md-input-container>
+                <label>Confirm password</label>
+                <input type="password" name="confirmPassword" minlength="6" maxlength="12" ng-model="account.newAccount.ConfirmPassword" required>
+                <div ng-messages="personalityCreate.password.$error">
+                    <div ng-message="required">Password has form 6 to 12 symbols!</div>
+                </div>
+            </md-input-container>
+            <md-input-container layout="column" layout-align="center center">
+                <md-button ng-click="account.signUp()" ui-sref-active="active" type="submit" id="registerUser" value="Register" class="md-raised md-primary" aria-label="login" ng-disabled="personalityCreate.$invalid">
+                    Sign up
+                </md-button>
+            </md-input-container>
+        </form>
+    </div>
+</div>
