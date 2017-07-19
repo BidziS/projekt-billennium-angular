@@ -411,3 +411,11 @@ i {
     text-align: center;
   }
 } */
+
+md-menu-bar md-menu.md-open > button {
+    background: rgb(63,81,181);
+}
+
+md-menu-content {
+    min-width: 0 !important;
+}

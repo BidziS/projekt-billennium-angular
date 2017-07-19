@@ -363,6 +363,32 @@ md-toast {
     // display: none;
 }
 
+//@media (min-width: 960px)
+//          md-menu-content {
+//              min-width: 0;
+//          }
+
+//.settings-button {
+//    max-width: 250px;
+//    height: 60px;
+//    position: absolute;
+//    right: 15%;
+//}
+//
+.settings {
+    position: absolute;
+    right: 15%;
+    height: 65px;
+    background-color: rgb(63,81,181);
+    border-radius: 0 0 10px 10px;
+    max-width: 250px;
+    text-align: right;
+    margin: 0;
+    padding: 0;
+    width: 210px;
+    z-index: 5;
+}
+
 
 
 

@@ -65,34 +65,36 @@ export default angular.module('AppModule', [ngMaterial, uiRouter, ngAnimate, ngC
 
 function checkAuthentication($rootScope, $state, $window) {
     $rootScope.$on("$locationChangeSuccess", function (event, toState, toParams, fromState, fromParams) {
-        let token = {}
-        if ($window.sessionStorage.getItem("token") !== null) {
-            token = JSON.parse($window.sessionStorage.getItem('token'));
-        }
-        let isEmpty = 0;
 
-        isEmpty = Object.keys(token).length;
-
-        let state = '';
-        console.log(toState);
-        console.log(toState.length);
-        for (let i = toState.length - 1; i > 0; i--) {
-            if (toState[i] === '/') {
-                break;
+            let token = {};
+            if ($window.sessionStorage.getItem("token") !== null) {
+                token = JSON.parse($window.sessionStorage.getItem('token'));
             }
-            let tmp = '';
-            tmp = toState[i] + state;
-            state = tmp;
-        }
+            let isEmpty = 0;
 
-        if (state !== 'login' && state !== 'logout' && state !== 'activate/' + access_token && isEmpty === 0) {
-            // User isn’t authenticated
-            console.log(token);
-            console.log(state);
-            $state.transitionTo("login");
-            event.preventDefault();
-        }
-        console.log(state);
+            isEmpty = Object.keys(token).length;
+
+            let registerState = toState.substring(24,33);
+
+            let state = '';
+            for (let i = toState.length - 1; i > 0; i--) {
+                if (toState[i] === '/') {
+                    break;
+                }
+                let tmp = '';
+                tmp = toState[i] + state;
+                state = tmp;
+            }
+
+            if (state !== 'login' && state !== 'logout' && registerState !== '/activate' &&  isEmpty === 0) {
+                // User isn’t authenticated
+                // console.log(token);
+                console.log(state);
+                $state.transitionTo("login");
+                event.preventDefault();
+            }
+            console.log(toState);
+
     });
 }
 
@@ -101,8 +103,6 @@ function routingConfigs($stateProvider, $urlRouterProvider, $windowProvider, $qP
     $urlRouterProvider
         .when('/home', '/home/statistic')
         .otherwise('/login');
-    console.log($urlRouterProvider);
-    console.log($stateProvider);
 
     const login = {
         name: 'login',
@@ -112,11 +112,8 @@ function routingConfigs($stateProvider, $urlRouterProvider, $windowProvider, $qP
     }
     const newAccount = {
         name: 'newAccount',
-        url: '/activate/{access_token}',
+        url: '/activate/:access_token?',
         component: 'newAccountComponent',
-        params: {
-            token: ''
-        }
     }
     const home = {
         name: 'home',

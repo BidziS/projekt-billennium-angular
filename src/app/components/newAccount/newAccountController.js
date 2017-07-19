@@ -1,43 +1,32 @@
 
 
 export default class NewAccountController {
-    constructor($mdToast, apiService, $stateParams){
+    constructor($mdToast, apiService, $stateParams, $state){
         this.ApiService = apiService;
         this.$mdToast = $mdToast;
+        this.$state = $state;
         this.newAccount = {
-            'Token': '',
+            'Token': $stateParams.access_token,
             'Password': '',
             'ConfirmPassword': ''
         };
         this.$stateParams = $stateParams;
-        console.log(this.$stateParams);
     }
     signUp() {
         if (this.newAccount.Password !== this.newAccount.ConfirmPassword) {
             this.badPasswords();
-        }
-        // else if (typeof this.token === 'undefined') {
-        //     this.noAccess();
-        // }
-        else {
+        } else {
             console.log(this.newAccount);
             this.ApiService.postAccount('api/Account/Activate', this.newAccount)
                 .then(response => {
                     console.log(response);
-                    // this.returnResult = response;
-                    // this.role = this.returnResult.roles;
-                    // this.token = this.returnResult.access_token;
-                    // console.log(this.returnResult);
-                    // console.log(this.role);
-                    // this.$state.go('home');
-                    // this.loading = false;
+                    this.$state.go('login');
                 })
                 .catch(error => {
                     if (error.status === 400) {
                         console.log('złe dane');
                         // this.badRequest();
                     } else {
-                        console.log('baza danych nie odpowiada');
                         this.badDatabase();
                     }
                 })
@@ -73,4 +62,4 @@ export default class NewAccountController {
     }
 }
 
-NewAccountController.$inject = ['$mdToast','apiService', '$stateParams'];
+NewAccountController.$inject = ['$mdToast','apiService', '$stateParams', '$state'];

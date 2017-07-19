@@ -19,6 +19,7 @@ export default class LoginController {
         this.loading = true;
         this.ApiService.logInToService(this.user).then(response => {
             this.returnResult = response;
+            console.log(this.returnResult);
             this.role = this.returnResult.roles;
             this.token = this.returnResult.access_token;
             console.log(this.returnResult);

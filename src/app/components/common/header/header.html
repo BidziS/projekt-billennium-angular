@@ -3,9 +3,18 @@
         <i class="fa fa-bars menu-button" aria-hidden="true"></i>
     </md-button>
     <h1 class="header-title">{{vm.title}}</h1>
-    <a ui-sref="newAccount">new account</a>
     <div flex></div>
-    <md-button>{{vm.user}}</md-button>
+    <md-list class="settings" class="menu-toggle-list">
+        <md-list-item>
+            <md-button ng-click="vm.toggleSubmenu()" class="menu-list-button settings-button" flex>
+                Name
+            </md-button>
+        </md-list-item>
+        <md-list-item ng-show="vm.isOpen" ng-repeat="item in vm.settings">
+            <md-button class="submenu-list-button" ui-sref-active="active" ng-click="" ng-bind="item">
+            </md-button>
+        </md-list-item>
+    </md-list>
     <md-button ng-click="vm.logout()">Sign out
         <span class="glyphicon glyphicon-log-out"></span>
     </md-button>

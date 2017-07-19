@@ -17,6 +17,7 @@ export default class ManageGroupsController{
     }
 
     getGroup(){
+        console.log($stateParams.id);
         this.ApiService.getRequest('api/Groups').then(response => {
             this.data = response.data.Data.Entries;
             this.name = response.data.Data.Name;
