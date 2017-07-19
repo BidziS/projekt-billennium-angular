@@ -3,6 +3,8 @@ import ngMaterial from 'angular-material';
 import ngAnimate from 'angular-animate';
 import uiRouter from '@uirouter/angularjs';
 import ngChart from 'angular-chart.js';
+import dirPaginate from 'angular-utils-pagination';
+import mdCollectionPagination from 'md-collection-pagination';
 
 
 import '../../node_modules/angular-material/angular-material.css';
@@ -25,6 +27,7 @@ import ManageLecturesComponent from './components/home/manageLectures/manage-lec
 import ManageGroupsComponent from './components/home/manageGroups/manage-groupsComponent';
 import ManageGroupComponent from './components/home/manageGroups/manage-selected-group/manage-selected-groupComponent';
 import GenericComponent from './components/common/generic/genericComponent';
+import StudentTestComponent from './components/home/studentTest/studentTestComponent';
 import ModalController from './components/common/generic/modalController';
 import AddLecturerController from './components/home/manageLectures/add-lecturer/add-lecturerController';
 import AddStudentToGroupController from './components/home/manageGroups/manage-selected-group/add-student-to-group/add-student-to-groupController';
@@ -40,7 +43,7 @@ import DataStoreService from './api/dataStoreService';
 
 
 
-export default angular.module('AppModule', [ngMaterial, uiRouter, ngAnimate, ngChart, CommonModule.name])
+export default angular.module('AppModule', [ngMaterial, uiRouter, ngAnimate, ngChart, mdCollectionPagination, dirPaginate, CommonModule.name])
                     .config(routingConfigs)
                     .run(checkAuthentication)
                     .component('homeComponent', HomeComponent)
@@ -51,6 +54,7 @@ export default angular.module('AppModule', [ngMaterial, uiRouter, ngAnimate, ngC
                     .component('myManageGroup', ManageGroupComponent)
                     .component('logoutComponent', LogoutComponent)
                     .component('genericComponent', GenericComponent)
+                    .component('studentTestComponent', StudentTestComponent)
                     .service('menuService', MenuService)
                     .service('authService', AuthService)
                     .service('apiService', ApiService)
@@ -144,6 +148,11 @@ function routingConfigs($stateProvider, $urlRouterProvider, $windowProvider, $qP
       id: ''
     }
   }
+  const studentTest = {
+    name: 'home.student-test',
+    url: '/student-test',
+    component: 'studentTestComponent'
+  }
 
   const logout = {
     name: 'logout',
@@ -159,5 +168,6 @@ function routingConfigs($stateProvider, $urlRouterProvider, $windowProvider, $qP
     .state(homeManageGroups)
     .state(homeManageTasks)
     .state(manageGroup)
+    .state(studentTest)
     .state(logout);
 }

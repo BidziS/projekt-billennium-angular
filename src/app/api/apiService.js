@@ -2,12 +2,12 @@ import { $http, $q } from 'angular';
 import sessionStorageService from './sessionStorageService';
 
 export default class ApiService {
-    constructor($http, $q, sessionStorageService){
+    constructor($http, $q, sessionStorageService) {
         this.$http = $http;
         this.$q = $q;
         this.SessionStorageService = sessionStorageService;
-        // this.url = 'http://localhost:57839/';
-        this.url = 'http://10.24.14.219:5786/';
+        this.url = 'http://localhost:57839/';
+        //this.url = 'http://10.24.14.219:5786/';
         this.token = {
             token_type: '',
             access_token: ''
@@ -25,30 +25,30 @@ export default class ApiService {
         }
     }
 
-    getRequest(path){
+    getRequest(path) {
         this.setDefaultHeader();
         return this.$http.get(this.url + path, this.defaultHeader);
     }
 
-    postRequest(path, data){
+    postRequest(path, data) {
         this.setDefaultHeader();
         return this.$http.post(this.url + path, data, this.defaultHeader);
     }
 
-    putRequest(path, data, id){
+    putRequest(path, data, id) {
         this.setDefaultHeader();
         return this.$http.put(this.url + path + id, data, this.defaultHeader);
     }
 
-    deleteRequest(path){
+    deleteRequest(path) {
         this.setDefaultHeader();
         return this.$http.delete(this.url + path, this.defaultHeader);
     }
 
-    logInToService(user){
+    logInToService(user) {
         let loginString = `grant_type=password&username=${user.username}&password=${user.password}`;
         return this.$q((resolve, reject) => {
-            this.$http.post(this.url +'Token', loginString, this.authorizationHeader).then(response => {
+            this.$http.post(this.url + 'Token', loginString, this.authorizationHeader).then(response => {
 
                 this.SessionStorageService.setItemInStorage(response.data, 'token');
                 resolve(response.data);
@@ -57,11 +57,11 @@ export default class ApiService {
                 reject(e);
             })
         })
-        
+
     }
 
 
-    setDefaultHeader(){
+    setDefaultHeader() {
         this.token = this.SessionStorageService.getItemFromStorage('token');
         this.defaultHeader = {
             headers: {

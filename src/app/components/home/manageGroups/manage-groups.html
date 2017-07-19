@@ -1,35 +1,36 @@
 <md-card md-theme="darkgrey" md-theme-watch flex>
-  <md-card-container class="table-md-cart-container" flex>
-    <div>
-      <span class="table-title">Manage Groups</span>
-      <md-button ng-click="groups.openAddGroupForm()" class="md-raised md-primary">Add group</md-button>
-    </div>
-    <md-content layout="column" flex="flex" class="table-content">
-        <h1 ng-if="!groups.isSomeData" class="table-no-data">No data</h1>
-        <table ng-if="groups.isSomeData" class="md-table" md-colresize="md-colresize">
-        <thead>
-            <tr class="md-table-headers-row">
-            <th class="md-table-header" ng-repeat="column in groups.columnsName">
-                <a href="#"> 
-                    <i class="ion-android-arrow-dropup"></i>
-                    <i class="ion-android-arrow-dropdown" ng-show="!reverse &amp;&amp; h.field == predicate"></i>
-                </a>
-                <span ng-bind="column"></span></th>
-            <th class="md-table-header"></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="md-table-content-row" ng-repeat="data in groups.data">
-                <td class="md-table-content" ng-repeat="column in groups.columnsName" ng-class="customClass[column.field]" ng-bind="data[column]"></td>
-                <td>
-                <md-button class="md-raised md-primary" ng-click="groups.modalOpen(data)" ng-disabled="true">Edit</md-button>
-                <md-button ng-click="groups.showConfirm($event, data.Id)" class="md-raised md-warn">Delete</md-button>
-                </td>
-            </tr>
+    <md-card-container class="table-md-cart-container" flex>
+        <div>
+            <span class="table-title">Manage Groups</span>
+            <md-button ng-click="groups.openAddGroupForm()" class="md-raised md-primary">Add group</md-button>
+        </div>
+        <md-content layout="column" flex="flex" class="table-content">
+            <h1 ng-if="!groups.isSomeData" class="table-no-data">No data</h1>
+            <table ng-if="groups.isSomeData" class="md-table" md-colresize="md-colresize">
+                <thead>
+                    <tr class="md-table-headers-row">
+                        <th class="md-table-header" ng-repeat="column in groups.columnsName">
+                            <a href="#">
+                                <i class="ion-android-arrow-dropup"></i>
+                                <i class="ion-android-arrow-dropdown" ng-show="!reverse &amp;&amp; h.field == predicate"></i>
+                            </a>
+                            <span ng-bind="column"></span></th>
+                        <th class="md-table-header"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="md-table-content-row" dir-paginate="data in groups.data | itemsPerPage: 4">
+                        <td class="md-table-content" ng-repeat="column in groups.columnsName" ng-class="customClass[column.field]" ng-bind="data[column]"></td>
+                        <td>
+                            <md-button class="md-raised md-primary" ng-click="groups.modalOpen(data)" ng-disabled="true">Edit</md-button>
+                            <md-button ng-click="groups.showConfirm($event, data.Id)" class="md-raised md-warn">Delete</md-button>
+                        </td>
+                    </tr>
 
-        </tbody>
-        </table>
-    </md-content>
-  </md-card-container>
+                </tbody>
+            </table>
+        </md-content>
+        <dir-pagination-controls [max-size="" ] [direction-links="" ] [boundary-links="" ] [on-page-change="" ] [pagination-id="" ] [template-url="" ] [auto-hide="" ]>
+        </dir-pagination-controls>
+    </md-card-container>
 </md-card>
-

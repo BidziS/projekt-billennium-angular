@@ -1,38 +1,37 @@
 <md-card md-theme="darkgrey" md-theme-watch flex>
-  <md-card-container class="table-md-cart-container" flex>
-    
-    <div ng-if="!lecturers.isLoading">
-      <span class="table-title" ng-cloak ng-bind="lecturers.name"></span>
-      <md-button class="md-raised md-primary" ng-click="lecturers.modalOpen('Add')">Add</md-button>
-    </div>
+    <md-card-container class="table-md-cart-container" flex>
+        <div ng-if="!lecturers.isLoading">
+            <span class="table-title" ng-cloak ng-bind="lecturers.name"></span>
+            <md-button class="md-raised md-primary" ng-click="lecturers.modalOpen('Add')">Add</md-button>
+        </div>
+        <md-content ng-if="!lecturers.isLoading" layout="column" flex="flex" class="table-content">
+            <h1 ng-if="!lecturers.isSomeData" class="table-no-data">No data</h1>
+            <table ng-if="lecturers.isSomeData" class="md-table" md-colresize="md-colresize">
+                <thead>
+                    <tr class="md-table-headers-row">
+                        <th class="md-table-header" ng-repeat="column in lecturers.columnsName">
+                            <a href="#">
+                                <i class="ion-android-arrow-dropup"></i>
+                                <i class="ion-android-arrow-dropdown" ng-show="!reverse &amp;&amp; column.field == predicate"></i>
+                            </a>
 
-    <md-content ng-if="!lecturers.isLoading" layout="column" flex="flex" class="table-content">
-        <h1 ng-if="!lecturers.isSomeData" class="table-no-data">No data</h1>
-        <table ng-if="lecturers.isSomeData" class="md-table" md-colresize="md-colresize">
-          <thead>
-            <tr class="md-table-headers-row">
-          <th class="md-table-header" ng-repeat="column in lecturers.columnsName">
-            <a href="#">
-              <i class="ion-android-arrow-dropup"></i>
-              <i class="ion-android-arrow-dropdown" ng-show="!reverse &amp;&amp; column.field == predicate"></i>
-            </a>
-            <span ng-bind="column"></span>
-          </th>
-              <th class="md-table-header"></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="md-table-content-row" ng-repeat="data in lecturers.data">
-              <td class="md-table-content" ng-repeat="column in lecturers.columnsName" ng-class="customClass[column.field]" ng-bind="data[column]"></td>
-              <td>
-                <md-button ng-click="lecturers.showConfirm($event, data.Id)" class="md-raised md-warn">Delete</md-button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+                            <span ng-bind="column"></span>
+                        </th>
+                        <th class="md-table-header"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="md-table-content-row" ng-repeat="data in lecturers.data">
+                        <td class="md-table-content" ng-repeat="column in lecturers.columnsName" ng-class="customClass[column.field]" ng-bind="data[column]"></td>
+                        <td>
+                            <md-button ng-click="lecturers.showConfirm($event, data.Id)" class="md-raised md-warn">Delete</md-button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </md-content>
-    <div class="loader" layout="row" ng-if="lecturers.isLoading" layout-sm="column" layout-align="center center" aria-label="wait">
-      <md-progress-circular md-diameter="80" md-mode="indeterminate"></md-progress-circular>
-    </div>
-  </md-card-container>
+        <div class="loader" layout="row" ng-if="lecturers.isLoading" layout-sm="column" layout-align="center center" aria-label="wait">
+            <md-progress-circular md-diameter="80" md-mode="indeterminate"></md-progress-circular>
+        </div>
+    </md-card-container>
 </md-card>
