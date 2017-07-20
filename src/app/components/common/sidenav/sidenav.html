@@ -5,15 +5,15 @@
                 Main menu
             </md-button>
         </md-list-item>
-        <md-list-item>
+        <md-list-item data-ng-if="">
             <md-button ng-click="vm.goToSite('manage-lectures')" class="menu-list-button">          
                 Manage lecturers
             </md-button>
         </md-list-item>
-        <md-list-item>
+        <md-list-item data-ng-if="">
             <my-menu flex></my-menu>
         </md-list-item>
-        <md-list-item>           
+        <md-list-item data-ng-if="">
             <md-button ng-click="vm.goToSite('manage-groups')"  class="menu-list-button md-button" ng-disabled="true">      
                     Manage tasks
             </md-button>        

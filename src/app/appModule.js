@@ -75,25 +75,30 @@ function checkAuthentication($rootScope, $state, $window) {
             isEmpty = Object.keys(token).length;
 
             let registerState = toState.substring(24,33);
+            // console.log('wartosc na wejsciu: ',registerState);
 
-            let state = '';
-            for (let i = toState.length - 1; i > 0; i--) {
-                if (toState[i] === '/') {
-                    break;
+            if (registerState !== '/activate') {
+                let state = '';
+                for (let i = toState.length - 1; i > 0; i--) {
+                    if (toState[i] === '/') {
+                        break;
+                    }
+                    let tmp = '';
+                    tmp = toState[i] + state;
+                    state = tmp;
                 }
-                let tmp = '';
-                tmp = toState[i] + state;
-                state = tmp;
+                if (state !== 'login' && state !== 'logout' &&  isEmpty === 0) {
+                    // User isn’t authenticated
+                    // console.log(token);
+                    console.log('wartosc w 2 ifie: ',state);
+                    $state.transitionTo("login");
+                    event.preventDefault();
+                }
+                // console.log(toState);
+            } else {
+                // console.log('rejestracja ok');
             }
 
-            if (state !== 'login' && state !== 'logout' && registerState !== '/activate' &&  isEmpty === 0) {
-                // User isn’t authenticated
-                // console.log(token);
-                console.log(state);
-                $state.transitionTo("login");
-                event.preventDefault();
-            }
-            console.log(toState);
 
     });
 }
@@ -112,8 +117,11 @@ function routingConfigs($stateProvider, $urlRouterProvider, $windowProvider, $qP
     }
     const newAccount = {
         name: 'newAccount',
-        url: '/activate/:access_token?',
+        url: '/activate/{access_token}',
         component: 'newAccountComponent',
+        params: {
+            access_token: ''
+        }
     }
     const home = {
         name: 'home',

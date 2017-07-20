@@ -3,31 +3,42 @@ import {$state} from '@uirouter/angularjs';
 import sessionStorageService from '../../../api/sessionStorageService';
 
 export default class HeaderController {
-    constructor($mdSidenav, $state, sessionStorageService){
-        this.title = 'SQL Exam';
+    constructor($mdSidenav, $state, sessionStorageService, $rootScope){
+        this.title = 'Shut up and learn';
         this.$mdSidenav = $mdSidenav;
         this.$state = $state;
         this.sessionStorageService = sessionStorageService;
         this.getUserEmail();
-        this.settings = ['Change password', 'Change e-mail'];
         this.isOpen = false;
     }
 
-    toggleMenu(){
+    toggleMenu() {
         this.$mdSidenav('left').toggle();
     }
 
-    logout(){
+    logout() {
         this.$state.go('logout');
     }
-    getUserEmail(){
+    getUserEmail() {
         let token = this.sessionStorageService.getItemFromStorage('token');
         this.user = token.userName;
         console.log(token);
     }
 
-    toggleSubmenu(){
+    toggleSubmenu() {
         this.isOpen = !this.isOpen;
+    }
+
+    changePassword() {
+        console.log('password');
+        this.isOpen = false;
+        // this.$state.go('');
+    }
+
+    changeEmail() {
+        console.log('email');
+        this.isOpen = false;
+        // this.$state.go('');
     }
     
 }

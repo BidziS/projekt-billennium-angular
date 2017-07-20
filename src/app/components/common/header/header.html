@@ -2,20 +2,26 @@
     <md-button hide-gt-sm ng-click="vm.toggleMenu()">
         <i class="fa fa-bars menu-button" aria-hidden="true"></i>
     </md-button>
-    <h1 class="header-title">{{vm.title}}</h1>
+    <h1 class="header-title style-text">{{ vm.title }}</h1>
     <div flex></div>
     <md-list class="settings" class="menu-toggle-list">
         <md-list-item>
             <md-button ng-click="vm.toggleSubmenu()" class="menu-list-button settings-button" flex>
-                Name
+                {{ vm.user }}
             </md-button>
         </md-list-item>
-        <md-list-item ng-show="vm.isOpen" ng-repeat="item in vm.settings">
-            <md-button class="submenu-list-button" ui-sref-active="active" ng-click="" ng-bind="item">
+        <md-list-item data-ng-if="vm.isOpen">
+            <md-button class="menu-list-button settings-button" ui-sref-active="active" ng-click="vm.changePassword()">
+                Change password
+            </md-button>
+        </md-list-item>
+        <md-list-item data-ng-if="vm.isOpen">
+            <md-button class="menu-list-button settings-button" ui-sref-active="active" ng-click="vm.changeEmail()">
+                Change e-mail
             </md-button>
         </md-list-item>
     </md-list>
-    <md-button ng-click="vm.logout()">Sign out
+    <md-button class="logout-button" ng-click="vm.logout()">Sign out
         <span class="glyphicon glyphicon-log-out"></span>
     </md-button>
 </md-toolbar>

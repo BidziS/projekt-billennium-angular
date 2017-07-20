@@ -26,6 +26,7 @@ export default class ApiService {
     }
 
     getRequest(path){
+        console.log(this.defaultHeader);
         this.setDefaultHeader();
         return this.$http.get(this.url + path, this.defaultHeader);
     }
@@ -47,9 +48,10 @@ export default class ApiService {
 
     logInToService(user){
         let loginString = `grant_type=password&username=${user.username}&password=${user.password}`;
+        console.log(loginString);
         return this.$q((resolve, reject) => {
             this.$http.post(this.url +'Token', loginString, this.authorizationHeader).then(response => {
-
+                console.log(response.data);
                 this.SessionStorageService.setItemInStorage(response.data, 'token');
                 resolve(response.data);
             }).catch(e => {

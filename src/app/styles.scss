@@ -90,6 +90,7 @@ md-list-item{
 
 md-toolbar{
     position: fixed;
+    min-height: 70px;
 }
 
 .style-text {
@@ -363,33 +364,33 @@ md-toast {
     // display: none;
 }
 
-//@media (min-width: 960px)
-//          md-menu-content {
-//              min-width: 0;
-//          }
 
-//.settings-button {
-//    max-width: 250px;
-//    height: 60px;
-//    position: absolute;
-//    right: 15%;
-//}
-//
+.settings-button {
+    margin: 4px;
+}
+
 .settings {
-    position: absolute;
     right: 15%;
-    height: 65px;
+    height: 60px;
     background-color: rgb(63,81,181);
-    border-radius: 0 0 10px 10px;
     max-width: 250px;
     text-align: right;
     margin: 0;
     padding: 0;
-    width: 210px;
+    //width: 210px;
     z-index: 5;
 }
 
+.settings md-list-item {
+    background-color: rgb(63,81,181);
+    padding: 0;
+    margin: 0 !important;
+    //width: 175px;
+}
 
+.logout-button {
+    //width: 110px;
+}
 
 
 
