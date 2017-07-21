@@ -10,6 +10,7 @@ export default class MenuController{
         this.isOpen = false;
         this.menu = [];
         this.$scope = $scope;
+
         let dataStorage = this.DataStoreService;
         this.$scope.$watch(function(){return dataStorage.getGroups();}, (value) => {
             console.log(value);
@@ -40,4 +41,5 @@ export default class MenuController{
             
         });
     }
+
 }

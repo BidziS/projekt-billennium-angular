@@ -1,8 +1,8 @@
-<div flex>
+<div flex tabindex="-1" ng-blur="test.showConfirm()">
     <md-card md-theme="darkgrey" md-theme-watch flex dir-paginate="data in test.data | itemsPerPage: 1">
         <md-card-title>
             <md-card-title-text>
-                <span class="md-headline card-title">Etap 1</span>
+                <span class="md-headline card-title" ng-bind="'Etap '+test.$stateParams.id">Etap 1</span>
             </md-card-title-text>
         </md-card-title>
         <md-content-card style="overflow-y: auto" flex>
@@ -16,34 +16,23 @@
                 <div ng-cloak flex="90">
                     <md-content>
                         <md-tabs md-dynamic-height md-border-bottom>
-                            <md-tab label="Tabela 1" ng-repeat="exampleTableColumnName in test.exampleTablesColumnsName">
+                            <md-tab label="{{test.exampleTablesName.TableNames[key]}}" ng-repeat="(key, value) in test.exampleTablesColumnsName">
                                 <md-content class="md-padding">
-                                    <h1 class="md-display-2">Tabela 1</h1>
+                                    <h1 class="md-display-2" ng-bind="test.exampleTablesName.TableNames[key]">Tabela 1</h1>
                                     <table class="md-table" md-colresize="md-colresize">
                                         <thead>
                                             <tr class="md-table-headers-row">
-                                                <th class="md-table-header" ng-repeat="name in exampleTableColumnName">
+                                                <th class="md-table-header" ng-repeat="name in value">
                                                     <span ng-bind="name">Kolumna 1</span>
                                                 </th>
-
-
-
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr class="md-table-content-row">
-                                                <td class="md-table-content">
-                                                    <span>Wartosc 1</span>
+                                            <tr class="md-table-content-row" ng-repeat="row in test.exampleData[key]">
+                                                <td class="md-table-content" ng-repeat="columnName in value">
+                                                    <span ng-bind="row[columnName]">Wartosc 1</span>
                                                 </td>
-                                                <td class="md-table-content">
-                                                    <span>Wartosc 11</span>
-                                                </td>
-                                                <td class="md-table-content">
-                                                    <span>Wartosc 111</span>
-                                                </td>
-                                                <td class="md-table-content">
-                                                    <span>Wartosc 1111</span>
-                                                </td>
+
                                             </tr>
 
                                         </tbody>
@@ -58,46 +47,48 @@
                         <md-content layout-padding flex="90">
                             <div>
                                 <form name="answerForm">
-                                    <md-input-container class="md-block">
+                                    <md-input-container class="md-block" >
                                         <label>Odpowiedź</label>
-                                        <textarea ng-model="answer" md-maxlength="150" rows="3" md-select-on-focus></textarea>
+                                        <textarea ng-model="test.savedAnswer[data.Id]" md-maxlength="150" rows="3" md-select-on-focus ng-blur="test.addAnswer(test.savedAnswer[data.Id],data.Id)"></textarea>
                                     </md-input-container>
 
                                 </form>
                             </div>
                         </md-content>
                         <div layout="row" layout-align="center center">
-                            <md-button class="md-raised" flex="10" ng-click="test.checkAnswer(answer)" layout-align="center end">Sprawdź</md-button>
+                            <md-button class="md-raised" flex="10" ng-click="test.checkAnswer(test.savedAnswer[data.Id])" layout-align="center end">Check</md-button>
                         </div>
-
                     </div>
                     <md-content>
 
                     </md-content>
-                    <h1 class="md-display-2 colored no-margin student-answer-padding">Tabela 1</h1>
-                    <table ng-if="test.isChecked" class="md-table colored" md-colresize="md-colresize">
-                        <thead>
+                    <div ng-if="test.isChecked">
+                        <h1 class="md-display-2 colored no-margin student-answer-padding">Query result</h1>
+                        <table class="md-table colored" md-colresize="md-colresize">
+                            <thead>
                             <tr class="md-table-headers-row">
                                 <th class="md-table-header" ng-repeat="columnName in test.columnsName">
                                     <span ng-bind="columnName">Kolumna 1</span>
                                 </th>
                             </tr>
-                        </thead>
-                        <tbody>
+                            </thead>
+                            <tbody>
                             <tr class="md-table-content-row" ng-repeat="row in test.result.data">
                                 <td class="md-table-content" ng-repeat="columnName in test.columnsName">
                                     <span ng-bind="row[columnName]"></span>
                                 </td>
 
                             </tr>
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
+                    </div>
+
                 </div>
             </div>
             <div layout="row" layout-align="center center">
 
                 <div>
-                    <dir-pagination-controls [max-size="" ] [direction-links="" ] [boundary-links="" ] [on-page-change="" ] [pagination-id="" ] [template-url="" ] [auto-hide="" ]>
+                    <dir-pagination-controls >
                     </dir-pagination-controls>
                 </div>
 
@@ -105,8 +96,9 @@
 
         </md-content-card>
         <md-card-actions layout="row">
-            <md-button>Action 1</md-button>
-            <md-button>Action 2</md-button>
+            <md-button ng-if="test.exerciseCount===data.Number">Send all solutions</md-button>
+
         </md-card-actions>
     </md-card>
 </div>
+

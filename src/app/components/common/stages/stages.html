@@ -1,0 +1,10 @@
+<md-button ng-click="vm.toogleSubmenu()" class="menu-list-button" flex layout="row">Stages
+    <span aria-hidden="true" class="pullright-max fa fa-chevron-down md-toggle-icon" ng-class="{'clicked': vm.isOpen === true}"></span>
+</md-button>
+<ul ng-show="vm.isOpen" class="menu-toggle-list ">
+    <li ng-repeat="item in vm.stages">
+        <md-button class="submenu-list-button" ui-sref-active="active" ng-click="vm.goToDoTest(item.Id,item.Name)" ng-bind="item.Name">
+        </md-button>
+    </li>
+
+</ul>

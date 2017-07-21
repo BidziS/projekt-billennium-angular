@@ -148,6 +148,14 @@ function routingConfigs($stateProvider, $urlRouterProvider, $windowProvider, $qP
       id: ''
     }
   }
+  const doStage = {
+      name: 'home.do-stage',
+      url: '/do-stage/{id}',
+      component: 'studentTestComponent',
+      params:{
+      id:''
+      }
+  }
   const studentTest = {
     name: 'home.student-test',
     url: '/student-test',
@@ -169,5 +177,6 @@ function routingConfigs($stateProvider, $urlRouterProvider, $windowProvider, $qP
     .state(homeManageTasks)
     .state(manageGroup)
     .state(studentTest)
-    .state(logout);
+    .state(logout)
+    .state(doStage);
 }

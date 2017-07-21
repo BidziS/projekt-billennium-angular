@@ -1,6 +1,7 @@
 export default class DataStoreService{
     constructor(){
         this.groups = [];
+        this.stages = [];
     }
 
     setGroups(groups){
@@ -9,5 +10,11 @@ export default class DataStoreService{
 
     getGroups(){
         return this.groups;
+    }
+    setStages(stages){
+        this.stages = stages
+    }
+    getStage(){
+        return this.stages;
     }
 }
