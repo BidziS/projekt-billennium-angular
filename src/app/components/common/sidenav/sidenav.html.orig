@@ -1,0 +1,44 @@
+<md-sidenav md-is-locked-open="$mdMedia('gt-sm')" class="md-whiteframe-4dp" md-component-id="left">
+    <md-list>
+        <md-list-item>
+            <md-button ng-click="vm.goToSite('statistic')" class="menu-list-button">
+                Main menu
+            </md-button>
+        </md-list-item>
+<<<<<<< HEAD
+        <md-list-item data-ng-if="vm.iAmStudent == false && (vm.iAmLecturer == true || vm.iAmAdmin == true)">
+            <md-button ng-click="vm.goToSite('manage-lectures')" class="menu-list-button">          
+=======
+        <md-list-item>
+            <md-button ng-click="vm.goToSite('manage-lectures')" class="menu-list-button">
+>>>>>>> 1be87fde3d8fc278301caf724f4510d0aa70aca8
+                Manage lecturers
+            </md-button>
+        </md-list-item>
+        <md-list-item data-ng-if="vm.iAmStudent == false && (vm.iAmLecturer == true || vm.iAmAdmin == true)">
+            <my-menu flex></my-menu>
+        </md-list-item>
+<<<<<<< HEAD
+        <md-list-item data-ng-if="vm.iAmStudent == false && (vm.iAmLecturer == true || vm.iAmAdmin == true)">
+            <md-button ng-click="vm.goToSite('manage-groups')"  class="menu-list-button md-button" ng-disabled="true">      
+                    Manage tasks
+            </md-button>        
+=======
+        <md-list-item>
+            <stages-menu flex></stages-menu>
+        </md-list-item>
+        <md-list-item>
+            <md-button ng-click="vm.goToSite('manage-groups')" class="menu-list-button md-button" ng-disabled="true">
+                Manage tasks
+            </md-button>
+        </md-list-item>
+        <md-list-item>
+            <md-button ng-click="vm.goToSite('student-test')" class="menu-list-button md-button">
+                Test
+            </md-button>
+>>>>>>> 1be87fde3d8fc278301caf724f4510d0aa70aca8
+        </md-list-item>
+
+    </md-list>
+
+</md-sidenav>
