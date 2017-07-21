@@ -2,11 +2,11 @@ import { $http, $q } from 'angular';
 import sessionStorageService from './sessionStorageService';
 
 export default class ApiService {
-    constructor($http, $q, sessionStorageService){
+    constructor($http, $q, sessionStorageService) {
         this.$http = $http;
         this.$q = $q;
         this.SessionStorageService = sessionStorageService;
-        // this.url = 'http://localhost:57839/';
+        //this.url = 'http://localhost:57839/';
         this.url = 'http://10.24.14.219:5786/';
         this.token = {
             token_type: '',
@@ -25,33 +25,31 @@ export default class ApiService {
         }
     }
 
-    getRequest(path){
-        console.log(this.defaultHeader);
+    getRequest(path) {
         this.setDefaultHeader();
         return this.$http.get(this.url + path, this.defaultHeader);
     }
 
-    postRequest(path, data){
+    postRequest(path, data) {
         this.setDefaultHeader();
         return this.$http.post(this.url + path, data, this.defaultHeader);
     }
 
-    putRequest(path, data, id){
+    putRequest(path, data, id) {
         this.setDefaultHeader();
         return this.$http.put(this.url + path + id, data, this.defaultHeader);
     }
 
-    deleteRequest(path){
+    deleteRequest(path) {
         this.setDefaultHeader();
         return this.$http.delete(this.url + path, this.defaultHeader);
     }
 
-    logInToService(user){
+    logInToService(user) {
         let loginString = `grant_type=password&username=${user.username}&password=${user.password}`;
-        console.log(loginString);
         return this.$q((resolve, reject) => {
-            this.$http.post(this.url +'Token', loginString, this.authorizationHeader).then(response => {
-                console.log(response.data);
+            this.$http.post(this.url + 'Token', loginString, this.authorizationHeader).then(response => {
+
                 this.SessionStorageService.setItemInStorage(response.data, 'token');
                 resolve(response.data);
             }).catch(e => {
@@ -59,7 +57,7 @@ export default class ApiService {
                 reject(e);
             })
         })
-        
+
     }
 
     postRequestNoConfig(path, data) {
@@ -67,7 +65,7 @@ export default class ApiService {
         return this.$http.post(this.url + path, data);
     }
 
-    setDefaultHeader(){
+    setDefaultHeader() {
         this.token = this.SessionStorageService.getItemFromStorage('token');
         this.defaultHeader = {
             headers: {

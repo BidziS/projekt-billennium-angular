@@ -3,6 +3,8 @@ import ngMaterial from 'angular-material';
 import ngAnimate from 'angular-animate';
 import uiRouter from '@uirouter/angularjs';
 import ngChart from 'angular-chart.js';
+import dirPaginate from 'angular-utils-pagination';
+import mdCollectionPagination from 'md-collection-pagination';
 
 
 import '../../node_modules/angular-material/angular-material.css';
@@ -27,6 +29,8 @@ import ManageGroupComponent from './components/home/manageGroups/manage-selected
 import GenericComponent from './components/common/generic/genericComponent';
 import NewAccountComponent from './components/newAccount/newAccountComponent';
 import ChangePasswordComponent from './components/common/header/changePassword/change-passwordComponent';
+import StudentTestComponent from './components/home/studentTest/studentTestComponent';
+import TestResultComponent from './components/home/testResult/testResultComponent';
 import ChangeEmailComponent from './components/common/header/changeEmail/change-emailComponent';
 import ModalController from './components/common/generic/modalController';
 import AddLecturerController from './components/home/manageLectures/add-lecturer/add-lecturerController';
@@ -42,7 +46,7 @@ import SessionStorageService from './api/sessionStorageService';
 import DataStoreService from './api/dataStoreService';
 
 
-export default angular.module('AppModule', [ngMaterial, uiRouter, ngAnimate, ngChart, CommonModule.name])
+export default angular.module('AppModule', [ngMaterial, uiRouter, ngAnimate, ngChart, mdCollectionPagination, dirPaginate, CommonModule.name])
     .config(routingConfigs)
     .run(checkAuthentication)
     .component('homeComponent', HomeComponent)
@@ -55,6 +59,8 @@ export default angular.module('AppModule', [ngMaterial, uiRouter, ngAnimate, ngC
     .component('genericComponent', GenericComponent)
     .component('newAccountComponent', NewAccountComponent)
     .component('changePasswordComponent', ChangePasswordComponent)
+                    .component('studentTestComponent', StudentTestComponent)
+                    .component('testResultComponent', TestResultComponent)
     .component('changeEmailComponent', ChangeEmailComponent)
     .service('menuService', MenuService)
     .service('authService', AuthService)
@@ -172,6 +178,28 @@ function routingConfigs($stateProvider, $urlRouterProvider, $windowProvider, $qP
             id: ''
         }
     }
+  const doStage = {
+      name: 'home.do-stage',
+      url: '/do-stage/{id}',
+      component: 'studentTestComponent',
+      params:{
+      id:''
+      }
+  }
+  const testResult ={
+    name:'home.test-result',
+      url:'/test-result/{id}',
+      component: 'testResultComponent',
+      params:{
+      id:''
+      }
+  }
+  const studentTest = {
+    name: 'home.student-test',
+    url: '/student-test',
+    component: 'studentTestComponent'
+  }
+
 
     const changePassword = {
         name: 'home.change-password',
@@ -202,5 +230,8 @@ function routingConfigs($stateProvider, $urlRouterProvider, $windowProvider, $qP
         .state(manageGroup)
         .state(changePassword)
         .state(changeEmail)
-        .state(logout);
+    .state(studentTest)
+    .state(logout)
+    .state(doStage)
+    .state(testResult);
 }
