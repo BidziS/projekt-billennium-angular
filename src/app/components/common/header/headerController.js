@@ -21,7 +21,7 @@ export default class HeaderController {
     }
     getUserEmail() {
         let token = this.sessionStorageService.getItemFromStorage('token');
-        this.user = token.userName;
+        this.user = token.name;
         console.log(token);
     }
 
@@ -32,13 +32,13 @@ export default class HeaderController {
     changePassword() {
         console.log('password');
         this.isOpen = false;
-        // this.$state.go('');
+        this.$state.go('home.change-password');
     }
 
     changeEmail() {
         console.log('email');
         this.isOpen = false;
-        // this.$state.go('');
+        this.$state.go('home.change-email');
     }
     
 }

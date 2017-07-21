@@ -3,7 +3,7 @@ import {$state} from '@uirouter/angularjs';
 import sessionStorageService from '../../../api/sessionStorageService';
 
 export default class SidenavController{
-    constructor(MenuService, $state){
+    constructor(MenuService, $state, sessionStorageService){
         // // MenuService.getMenuItems()
         //     .then(result => this.menu = result.data);
         this.menu = [];

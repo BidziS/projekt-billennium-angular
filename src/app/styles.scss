@@ -385,21 +385,37 @@ md-toast {
     background-color: rgb(63,81,181);
     padding: 0;
     margin: 0 !important;
-    //width: 175px;
+    min-width: 175px;
 }
 
 .logout-button {
     //width: 110px;
 }
 
+.change-email-container, .change-password-container {
+    height: 100vh;
+    h1 {
+        font-size: 45px;
+    }
+    form {
+        width: 90%;
+        padding: 20px;
+    }
+    md-input-container {
+        width: 60%;
+        font-size: 35px;
+    }
+    md-progress-circular {
+        position: absolute;
+        top: 130px;
+    }
+    input {
+        font-size: 30px;
+    }
+    button {
+        width: 40%;
+        height: 100%;
+        font-size: 25px;
+    }
 
-
-
-
-
-
-
-
-
-
-
+}

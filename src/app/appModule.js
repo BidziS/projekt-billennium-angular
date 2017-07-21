@@ -26,6 +26,8 @@ import ManageGroupsComponent from './components/home/manageGroups/manage-groupsC
 import ManageGroupComponent from './components/home/manageGroups/manage-selected-group/manage-selected-groupComponent';
 import GenericComponent from './components/common/generic/genericComponent';
 import NewAccountComponent from './components/newAccount/newAccountComponent';
+import ChangePasswordComponent from './components/common/header/changePassword/change-passwordComponent';
+import ChangeEmailComponent from './components/common/header/changeEmail/change-emailComponent';
 import ModalController from './components/common/generic/modalController';
 import AddLecturerController from './components/home/manageLectures/add-lecturer/add-lecturerController';
 import AddStudentToGroupController from './components/home/manageGroups/manage-selected-group/add-student-to-group/add-student-to-groupController';
@@ -52,6 +54,8 @@ export default angular.module('AppModule', [ngMaterial, uiRouter, ngAnimate, ngC
     .component('logoutComponent', LogoutComponent)
     .component('genericComponent', GenericComponent)
     .component('newAccountComponent', NewAccountComponent)
+    .component('changePasswordComponent', ChangePasswordComponent)
+    .component('changeEmailComponent', ChangeEmailComponent)
     .service('menuService', MenuService)
     .service('authService', AuthService)
     .service('apiService', ApiService)
@@ -75,7 +79,7 @@ function checkAuthentication($rootScope, $state, $window) {
             isEmpty = Object.keys(token).length;
 
             let registerState = toState.substring(24,33);
-            // console.log('wartosc na wejsciu: ',registerState);
+
 
             if (registerState !== '/activate') {
                 let state = '';
@@ -89,14 +93,9 @@ function checkAuthentication($rootScope, $state, $window) {
                 }
                 if (state !== 'login' && state !== 'logout' &&  isEmpty === 0) {
                     // User isn’t authenticated
-                    // console.log(token);
-                    console.log('wartosc w 2 ifie: ',state);
                     $state.transitionTo("login");
                     event.preventDefault();
                 }
-                // console.log(toState);
-            } else {
-                // console.log('rejestracja ok');
             }
 
 
@@ -174,6 +173,18 @@ function routingConfigs($stateProvider, $urlRouterProvider, $windowProvider, $qP
         }
     }
 
+    const changePassword = {
+        name: 'home.change-password',
+        url: '/change-password',
+        component: 'changePasswordComponent'
+    }
+
+    const changeEmail = {
+        name: 'home.change-email',
+        url: '/change-email',
+        component: 'changeEmailComponent'
+    }
+
     const logout = {
         name: 'logout',
         url: '/logout',
@@ -189,5 +200,7 @@ function routingConfigs($stateProvider, $urlRouterProvider, $windowProvider, $qP
         .state(homeManageGroups)
         .state(homeManageTasks)
         .state(manageGroup)
+        .state(changePassword)
+        .state(changeEmail)
         .state(logout);
 }

@@ -55,6 +55,8 @@ export default class ManageLecturesController{
         };
         confirm.$mdDialog.show(conf).then(function(deleteItm){
             confirm.deleteItem(id);
+        }).catch(function (){
+            confirm.$mdDialog.cancel(conf);
         });
     };
 

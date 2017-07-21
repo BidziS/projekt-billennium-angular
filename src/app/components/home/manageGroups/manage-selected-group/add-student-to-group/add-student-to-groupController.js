@@ -9,7 +9,8 @@ export default class AddStudentToGroupController{
         this.$state = $state;
         this.addPerson = {
             Id:"",
-            Name: "",
+            FirstName: "",
+            Last: "",
             Email: ""
         }
         this.groupId = groupId;

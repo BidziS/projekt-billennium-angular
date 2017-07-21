@@ -17,7 +17,8 @@ export default class LoginController {
 
     logInTosite(){
         this.loading = true;
-        this.ApiService.logInToService(this.user).then(response => {
+        this.ApiService.logInToService(this.user)
+            .then(response => {
             this.returnResult = response;
             console.log(this.returnResult);
             this.role = this.returnResult.roles;
@@ -33,7 +34,7 @@ export default class LoginController {
                 this.badRequest();
             } else {
                 console.log('baza danych nie odpowiada');
-                this.badDatabase();
+                this.badApi();
             }
             this.loading = false;
         });
@@ -51,7 +52,7 @@ export default class LoginController {
         );
     }
 
-    badDatabase() {
+    badApi() {
         this.$mdToast.show(
             this.$mdToast.simple()
                 .textContent("   Oops... server don't answer")

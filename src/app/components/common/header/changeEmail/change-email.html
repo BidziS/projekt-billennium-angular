@@ -1,0 +1,33 @@
+<div class="change-email-container" layout="column" layout-align="center center" flex>
+    <h1>Change email</h1>
+    <form name="personalityCheck" layout="column" layout-align="space-around center" flex="50">
+        <md-input-container>
+            <label>Current email</label>
+            <input type="text" name="currentEmail" ng-model="email.email.OldEmailAddress" required>
+            <div ng-messages="personalityCheck.currentEmail.$error">
+                <div ng-message="required">Current email is required!</div>
+            </div>
+        </md-input-container>
+        <md-input-container>
+            <label>New email</label>
+            <input type="text" name="newEmail" ng-model="email.email.EmailAddress" required>
+            <div ng-messages="personalityCheck.newEmail.$error">
+                <div ng-message="required">Invalid email!</div>
+            </div>
+        </md-input-container>
+        <md-input-container>
+            <label>Confirm new email</label>
+            <input type="text" name="confirmNewEmail" ng-model="email.email.NewEmailAddress" required>
+            <div ng-messages="personalityCheck.confirmNewEmail.$error">
+                <div ng-message="required">Confirm new email!</div>
+            </div>
+        </md-input-container>
+        <md-input-container layout="column" layout-align="center center">
+            <md-button ng-click="email.showConfirm()" ui-sref-active="active" type="submit" id="registerUser"
+                       value="Register" class="md-raised md-primary" aria-label="login"
+                       ng-disabled="personalityCheck.$invalid">
+                Change
+            </md-button>
+        </md-input-container>
+    </form>
+</div>

@@ -17,17 +17,17 @@ export default class NewAccountController {
             this.badPasswords();
         } else {
             console.log(this.newAccount);
-            this.ApiService.postAccount('api/Account/Activate', this.newAccount)
+            this.ApiService.postRequestNoConfig('api/Account/Activate', this.newAccount)
                 .then(response => {
                     console.log(response);
+                    this.createdAccount();
                     this.$state.go('login');
                 })
                 .catch(error => {
                     if (error.status === 400) {
                         console.log('złe dane');
-                        // this.badRequest();
                     } else {
-                        this.badDatabase();
+                        this.badApi();
                     }
                 })
         }
@@ -43,7 +43,7 @@ export default class NewAccountController {
         );
     }
 
-    badDatabase() {
+    badApi() {
         this.$mdToast.show(
             this.$mdToast.simple()
                 .textContent("   Oops... server don't answer")
@@ -56,6 +56,15 @@ export default class NewAccountController {
         this.$mdToast.show(
             this.$mdToast.simple()
                 .textContent("Your link to register is invalid")
+                .position('top center')
+                .hideDelay(4000)
+        );
+    }
+
+    createdAccount() {
+        this.$mdToast.show(
+            this.$mdToast.simple()
+                .content("Your account is activated")
                 .position('top center')
                 .hideDelay(4000)
         );
