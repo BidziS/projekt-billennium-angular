@@ -1,4 +1,4 @@
-<div flex tabindex="-1" ng-blur="test.showConfirm()">
+<div flex  tabindex="-1" ng-blur="test.showConfirm()">
     <md-card md-theme="darkgrey" md-theme-watch flex dir-paginate="data in test.data | itemsPerPage: 1">
         <md-card-title>
             <md-card-title-text>
@@ -96,7 +96,7 @@
 
         </md-content-card>
         <md-card-actions layout="row">
-            <md-button ng-if="test.exerciseCount===data.Number">Send all solutions</md-button>
+            <md-button ng-if="test.exerciseCount===data.Number" ng-click="test.sendSolutions()">Send all solutions</md-button>
 
         </md-card-actions>
     </md-card>

@@ -28,6 +28,7 @@ import ManageGroupsComponent from './components/home/manageGroups/manage-groupsC
 import ManageGroupComponent from './components/home/manageGroups/manage-selected-group/manage-selected-groupComponent';
 import GenericComponent from './components/common/generic/genericComponent';
 import StudentTestComponent from './components/home/studentTest/studentTestComponent';
+import TestResultComponent from './components/home/testResult/testResultComponent';
 import ModalController from './components/common/generic/modalController';
 import AddLecturerController from './components/home/manageLectures/add-lecturer/add-lecturerController';
 import AddStudentToGroupController from './components/home/manageGroups/manage-selected-group/add-student-to-group/add-student-to-groupController';
@@ -55,6 +56,7 @@ export default angular.module('AppModule', [ngMaterial, uiRouter, ngAnimate, ngC
                     .component('logoutComponent', LogoutComponent)
                     .component('genericComponent', GenericComponent)
                     .component('studentTestComponent', StudentTestComponent)
+                    .component('testResultComponent', TestResultComponent)
                     .service('menuService', MenuService)
                     .service('authService', AuthService)
                     .service('apiService', ApiService)
@@ -156,11 +158,20 @@ function routingConfigs($stateProvider, $urlRouterProvider, $windowProvider, $qP
       id:''
       }
   }
+  const testResult ={
+    name:'home.test-result',
+      url:'/test-result/{id}',
+      component: 'testResultComponent',
+      params:{
+      id:''
+      }
+  }
   const studentTest = {
     name: 'home.student-test',
     url: '/student-test',
     component: 'studentTestComponent'
   }
+
 
   const logout = {
     name: 'logout',
@@ -178,5 +189,6 @@ function routingConfigs($stateProvider, $urlRouterProvider, $windowProvider, $qP
     .state(manageGroup)
     .state(studentTest)
     .state(logout)
-    .state(doStage);
+    .state(doStage)
+    .state(testResult);
 }

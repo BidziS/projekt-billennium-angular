@@ -32,7 +32,12 @@ export default class StagesController{
         })
     }
     goToDoTest(id, name){
-        this.$state.go('home.do-stage', {id: id, name: name})
+        if(this.stages[id].Grade === 0){
+            this.$state.go('home.do-stage', {id: id, name: name})
+        }
+        else{
+            this.$state.go('home.test-result', {id:id, name: name})
+        }
     }
 
 }

@@ -1,12 +1,14 @@
 import apiService from '../../../api/apiService';
-import { $stateParams } from '@uirouter/angularjs';
+import { $stateParams, $state } from '@uirouter/angularjs';
 import dirPaginate from 'angular-utils-pagination';
 import { $mdDialog, $mdToast } from 'angular-material';
 
 
+
 export default class StudentTestController {
-    constructor($stateParams, apiService, $mdDialog, $mdToast) {
+    constructor($stateParams, apiService, $mdDialog, $mdToast, $state) {
         this.$stateParams = $stateParams;
+        this.$state = $state;
         this.$mdDialog = $mdDialog;
         this.$mdToast = $mdToast;
         this.apiService = apiService;
@@ -28,8 +30,8 @@ export default class StudentTestController {
             this.solution
         ];*/
        this.answers = {
-           warnings : this.warningsCount,
-           solutions : []
+           Warnings : this.warningsCount,
+           Solutions : []
        };
 
 
@@ -75,36 +77,29 @@ export default class StudentTestController {
     }
     addAnswer(answerToAdd, exerciseId){
         let flag = false;
-        angular.forEach(this.answers.solutions, function (value, key) {
-            if(value.id === exerciseId){
-                value.solution = answerToAdd;
+        angular.forEach(this.answers.Solutions, function (value, key) {
+            if(value.ExerciseId === exerciseId){
+                value.Answer = answerToAdd;
                 flag = true;
             }
         })
         if(flag === false){
-            this.answers.solutions.push(
+            this.answers.Solutions.push(
                 {
-                    id : exerciseId,
-                    solution : answerToAdd}
+                    ExerciseId : exerciseId,
+                    Answer : answerToAdd}
             )
 
         }
         this.savedAnswer[exerciseId] = answerToAdd;
 
     }
-    showToast(){
-        this.$mdToast.show(
-            this.$mdToast.simple()
-                .textContent("Nie ściągaj")
-                .position('top center')
-                .hideDelay(4000)
-        )
-    }
+
     showConfirm(){
         let confirm = this;
-        this.answers.warnings++;
+        this.answers.Warnings++;
         let conf = confirm.$mdDialog.confirm()
-            .title(`Nie ściągaj, jeszcze `+(3-this.answers.warnings)+' razy i stracisz możliwość rozwiązywania zadań')
+            .title(`Nie ściągaj, jeszcze `+(3-this.answers.Warnings)+' razy i stracisz możliwość rozwiązywania zadań')
             .textContent('')
             .ariaLabel('')
             //.targetEvent(ev)
@@ -114,6 +109,12 @@ export default class StudentTestController {
         confirm.$mdDialog.show(conf);
 
         // if warnings===3 send answers
+    }
+    sendSolutions(){
+        this.apiService.postRequest('api/Stages/'+this.$stateParams.id+'/Solution',this.answers).then(response =>{
+
+        })
+        this.$state.go('home.statistic');
     }
 
 
