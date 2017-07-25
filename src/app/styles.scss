@@ -384,6 +384,7 @@ md-toast {
 
 .settings-button {
     margin: 4px;
+}
 .no-margin {
     margin: 0;
 }
@@ -403,10 +404,24 @@ md-toast {
     z-index: 5;
 }
 
+.settings md-input-container {
+    margin: 0;
+}
+
+.settings input {
+    font-size: 14px;
+    border-color: white;
+    border-radius: 5px;
+    background-color: rgb(63,81,181);
+    text-transform: uppercase;
+}
+
+
 .settings md-list-item {
     background-color: rgb(63,81,181);
     padding: 0;
     margin: 0 !important;
+    min-height: 70px;
     min-width: 175px;
 }
 .pagination-color {
@@ -444,4 +459,4 @@ md-toast {
         height: 100%;
         font-size: 25px;
     }
-}}
+}

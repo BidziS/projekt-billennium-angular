@@ -27,4 +27,14 @@
             <md-dialog>Username or password is incorrect</md-dialog>
         </form>
     </div>
+    <div>
+        <p>
+            Forgot password?
+        </p>
+        <form data-ng-if="login.forgotPassword()">
+            <md-input-container>
+                <input ng-model="">
+            </md-input-container>
+        </form>
+    </div>
 </div>

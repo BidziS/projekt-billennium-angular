@@ -10,23 +10,23 @@
                 Manage lecturers
             </md-button>
         </md-list-item>
+        <!--<md-list-item data-ng-if="vm.iAmStudent == false && (vm.iAmLecturer == true || vm.iAmAdmin == true)">-->
+            <!--<my-menu flex></my-menu>-->
+        <!--</md-list-item>-->
         <md-list-item data-ng-if="vm.iAmStudent == false && (vm.iAmLecturer == true || vm.iAmAdmin == true)">
             <my-menu flex></my-menu>
         </md-list-item>
-        <md-list-item data-ng-if="vm.iAmStudent == false && (vm.iAmLecturer == true || vm.iAmAdmin == true)">
-            <stages-menu flex></stages-menu>
-        </md-list-item>
-        <md-list-item>
-            <md-button ng-click="vm.goToSite('manage-groups')" class="menu-list-button md-button" ng-disabled="true">
-                Manage tasks
-            </md-button>
-        </md-list-item>
-        <md-list-item>
+        <!--<md-list-item>-->
+            <!--<md-button ng-click="vm.goToSite('manage-groups')" class="menu-list-button md-button" ng-disabled="true">-->
+                <!--Manage tasks-->
+            <!--</md-button>-->
+        <!--</md-list-item>-->
+        <md-list-item data-ng-if="vm.iAmStudent == true">
             <md-button ng-click="vm.goToSite('student-test')" class="menu-list-button md-button">
                 Test
             </md-button>
         </md-list-item>
-        <md-list-item>
+        <md-list-item data-ng-if="vm.iAmStudent == true">
             <stages-menu flex></stages-menu>
         </md-list-item>
 

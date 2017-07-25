@@ -7,7 +7,7 @@ export default class ChangeEmailController {
         this.$state = $state;
         this.$mdDialog = $mdDialog;
         this.email = {
-            OldEmailAddress: '',
+            Password: '',
             EmailAddress: '',
             NewEmailAddress: ''
         };
@@ -15,9 +15,6 @@ export default class ChangeEmailController {
     }
 
     changeEmail() {
-        if (this.email.EmailAddress !== this.email.NewEmailAddress) {
-            this.badEmails();
-        } else {
             console.log(this.email);
             this.apiService.postRequest('/api/Account/ChangeEmailAddress', this.email)
                 .then(response => {
@@ -26,15 +23,18 @@ export default class ChangeEmailController {
                     this.$state.go('home.statistic');
                 })
                 .catch(error => {
-                    this.badApi();
+                    if(error.status === 400) {
+                        this.badEmail();
+                    } else {
+                        this.badApi();
+                    }
                 })
-        }
     }
 
-    badEmails() {
+    badEmail() {
         this.$mdToast.show(
             this.$mdToast.simple()
-                .content("Passwords are different")
+                .content("Email is incorrect")
                 .position('top center')
                 .hideDelay(4000)
         );

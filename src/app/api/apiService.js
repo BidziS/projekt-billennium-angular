@@ -6,8 +6,8 @@ export default class ApiService {
         this.$http = $http;
         this.$q = $q;
         this.SessionStorageService = sessionStorageService;
-        this.url = 'http://localhost:57839/';
-        //this.url = 'http://10.24.14.219:5786/';
+        // this.url = 'http://localhost:57839/';
+        this.url = 'http://10.24.14.219:5786/';
         this.token = {
             token_type: '',
             access_token: ''
@@ -17,7 +17,7 @@ export default class ApiService {
                 "Content-Type": "application/json",
                 "Authorization": `${this.token.token_type} ${this.token.access_token}`
             }
-        }
+        };
         this.authorizationHeader = {
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded"

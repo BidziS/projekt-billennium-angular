@@ -24,9 +24,22 @@ export default class ChangePasswordController {
                     this.$state.go('home.statistic');
                 })
                 .catch(error => {
-                    this.badApi();
+                    if(error.status === 400) {
+                        this.badOldPassword();
+                    } else {
+                        this.badApi();
+                    }
                 })
         }
+    }
+
+    badOldPassword() {
+        this.$mdToast.show(
+            this.$mdToast.simple()
+                .content("Old password is incorrect")
+                .position('top center')
+                .hideDelay(4000)
+        );
     }
 
     badPasswords() {
